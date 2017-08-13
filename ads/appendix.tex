@@ -1,0 +1,79 @@
+% !TeX root = ../dokumentation.tex
+
+\addchap{\langanhang}
+ 
+
+{\Large
+\begin{enumerate}[label=\Alph*.]
+	\item Themeneinreichung
+	\item Quellenübersicht nach Datenbank
+	\item Übersicht der CD Inhalte
+	\item CD 
+\end{enumerate}
+}
+\pagebreak
+\includepdf[pages=1,scale=.9,pagecommand={\section*{A. Themeneinreichung}
+}]{themeneinreichung.pdf}
+\includepdf[pages=2,scale=.9,pagecommand={}]{themeneinreichung.pdf} % PDF um 10% verkleinert einbinden --> Kopf- und Fußzeile werden so korrekt dargestellt. Die Option `pages' ermöglicht es, eine bestimmte Sequenz von Seiten (z.B. 2-10 oder `-' für alle Seiten) auszuwählen.
+\pagebreak
+\section*{B. Quellenübersicht nach Datenbank}
+\addtocategory{heiseArchiv}{Gotz.15.04.2014,HenrykKonsek.2016,Kersten.2016,MatthiasKassner.2016,MichaelStal.2016,Obermaier.2016.01,Roden.2016,SebastianGolasch.2016,Wojcieszak.2016}
+\addtocategory{IEEEXplorer}{AlFuqaha.2015,AlFuqaha.2015b,Aziz.2014,Aziz.2016,Bandyopadhyay.2013,Bloebaum.2015,Caro.2013,ChenZhou.2014,Collina.2014,Durkop.2015,Gorges.2014,Govindan.,Hunkeler.,Luzuriaga.2014,Luzuriaga.2015,Rui.2015,ShinhoLee.,Singh.,Tarkoma.2012,Thangavel.2015}
+\addtocategory{acmdigital}{Kramer.2009,OHara.2007}
+\addtocategory{OASIS}{AMQPWorkingGroup.2009,Hunkeler.,OASIS.2014,OASIS.2016,OASIS.2016b,amqp.2011}
+\addtocategory{SpringerLink}{Sheltami.2015,SpringerGablerVerlag.2016,Teklemariam.2013}
+\addtocategory{Bing}{AndyPiper.19.02.2016,TomaszAdamczyk.2014}
+\addtocategory{Books24x7}{McEwen.2014}
+\addtocategory{EBESCOHost}{AlFuqaha.2015b}
+\addtocategory{EmeraldInsight}{Amaran.2015}
+\addtocategory{Google}{AdinaMihailescu.2014,AndyStandfordClark.,Beal.2015,Bormann.2016,CURSOREducationSchool.,CompTIA.28.09.2015,DaveEvans.2011,DominikObermaier.2015,DominikObermaier.2015b,Gargasz.2013,GeorgeMalliaroudakis.2015,Heer.2011,HiveMQ.b,IBMPressRoom.31.Mai2006,JackMannino.27.05.2015,Kovatsch.,LucyZhang.2011,Micrium.2015,Okuniewicz.2015,PingdomAB.2016,PivotalSoftware.2016,Schnabel.2008,Tomova.2014,itemisAG.2015,oV.2016}
+\addtocategory{Gartener}{RobvanderMeulen.10.November2015}
+\addtocategory{IBMScientificKnowledgeNetwork}{DanielAndresLopez.27.August2013}
+\addtocategory{IETF}{Hartke.2015,Rahman.2016,Shelby.2016}
+\addtocategory{OLCMathematik}{Hanna.2016,Obermaier.2014}
+\addtocategory{ScienceDirect}{Amaran.2015,Aziz.2016,Ishaq.2016}
+\addtocategory{slideshare}{BryanBoyd.2016,EricXiao.2014,HenrikSjostrand.2013,PeterR.Egli.28.August2013,Shelby.2014}
+\printbibliography[heading=subbibliography,category=slideshare, title={Slideshare}]
+\printbibliography[heading=subbibliography,category=heiseArchiv, title={Heise Archiv}]
+\printbibliography[heading=subbibliography,category=IEEEXplorer, title={IEEE Xplorer}]
+\printbibliography[heading=subbibliography,category=acmdigital, title={ACM Digital}]
+\printbibliography[heading=subbibliography,category=OASIS, title={OASIS Standard}]
+\printbibliography[heading=subbibliography,category=SpringerLink, title={SpringerLink}]
+\printbibliography[heading=subbibliography,category=Bing, title={Bing}]
+\printbibliography[heading=subbibliography,category=Books24x7, title={Books24x7}]
+\printbibliography[heading=subbibliography,category=EBESCOHost, title={EBESCOHost}]
+\printbibliography[heading=subbibliography,category=EmeraldInsight, title={Emerald Insight}]
+\printbibliography[heading=subbibliography,category=Google, title={Google}]
+\printbibliography[heading=subbibliography,category=Gartener, title={Gartener}]
+\printbibliography[heading=subbibliography,category=IBMScientificKnowledgeNetwork, title={IBM Scientific Knowledge Network}]
+\printbibliography[heading=subbibliography,category=IETF, title={IETF Dokuments}]
+\printbibliography[heading=subbibliography,category=OLCMathematik, title={OLC Mathematik}]
+\printbibliography[heading=subbibliography,category=ScienceDirect, title={ScienceDirect}]
+
+\pagebreak
+\section*{C. List of CD Contents}
+\begin{tabbing}
+	mm \= mm \= mmmmmmmmmmmmmmmm \= \kill
+	$\vdash$ \textbf{Arbeit/} \\ %\llcorner
+	| \>  -- Themeneinreichung.pdf	$\Rightarrow$ \textit{Formular der Themeneinreichung}\\
+	| \>  -- Praxisarbeit-1.pdf 	$\Rightarrow$ \textit{Praxisarbeit}\\
+	| \>  $\vdash$ \textbf{Latex-Quellcode/}   $\Rightarrow$ \textit{\LaTeX~Quellcodedatein und andere Datein für die Praxisarbeit}\\ %\llcorner
+	| \> \>  $\vdash$  \textbf{ads/}   	\> $\Rightarrow$ \textit{Deckblatt, Abstract und Anhänge}\\
+	| \> \>  $\vdash$  \textbf{content/}  \> $\Rightarrow$ \textit{Hauptteil}\\
+	| \> \>  $\vdash$  \textbf{images/}   \> $\Rightarrow$ \textit{Alle benutzten Bilder}\\
+	| \> \>  $\vdash$  \textbf{lang/}  \> $\Rightarrow$ \textit{Sprachdatein für das \LaTeX~Template}\\ %\llcorner
+	|\\
+	$\vdash$ \textbf{Gantt-Projektplanung/} $\Rightarrow$ \textit{Planungsdatein für Gantter und MS Project}\\ %\llcorner
+	|\\
+		$\vdash$ \textbf{Literatur/} \\ 
+	\> $\vdash$ \textbf{Citavi-Projekt/} \> \> $\Rightarrow$ \textit{Citavi (Bibliographie software) Projekt mit}\\
+	\> | \> \> \textit{allen Quellen die imBezug zur Arbeit stehen.} \\
+	\> | \> \> \textit{Die PDF-Dateins zu den Bibliographieeinträgen} \\
+	\> | \> \> \textit{sind im Unterordner `CitaviFiles'}\\
+	\> | \>  --	Praxisarbeit 1 - MQTT.ctv5  \>  $\Rightarrow$ \textit{Citavi Projektdatei}\\
+	\> | \>  $\vdash$ \textbf{CitaviCovers/} \>  $\Rightarrow$ \textit{Coverbilder für die Bibliographieeinträge}\\
+	\> | \>  $\vdash$ \textbf{CitaviFiles/} \> $\Rightarrow$ \textit{Zitierte und und andere PDF-Datein}\\ %\llcorner
+	\> $\vdash$ \textbf{eBooks/} \\
+	\> $\vdash$ \textbf{JournalArticles/} \\
+	\> $\vdash$ \textbf{Websites/} \\ %\llcorner
+\end{tabbing}
