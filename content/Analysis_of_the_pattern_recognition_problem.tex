@@ -1,5 +1,34 @@
 \chapter{Analysis of the pattern recognition problem}
-\chapter{Data}
-\chapter{Classification problem identification}
+\label{ch:Analysis of the pattern recognition problem}
 
+\section{Analysis of given sensor data}
+\label{sec:Analysis of the time series data}
+This chapter will provide a closer examination of the time series data belonging to the Sensorboard showcase. This data is basis fpr the further work of this paper and for answering the questions proposed in Chapter \ref{sec:Motivation}. \newline
+The sensor data measured by the Texas Instrument's SensorTag is collected and send to the IBM IoT Foundation. Measurements are taken at sampling rate of 10 measurements per second. To optimize accuracy the maximal sampeling rate of the Texas Instrument's SensorTag is used[ref to TI technical docu].  The measurements include acceleration in spacial 3 axis. Those measurements are taken  simultaneously and handled from then on together as one measurement collection. This collection is enriched with the time of the measurement  with millisecond accuracy. A example measurement collection can be seen in ... \ref{expmeasurement} Using the provided time of a measurement the data can be plotted on a timeaxis as seen in ... \ref{exptimeseriesplot}.
+A measurement collection as it is described above will be also referred to as a data point in this paper. The single measurements will be also referred to as features of a data point.\newline
+The Sensorboard has been tested and sensor data has been collected. During the testing of the Sensorboard 69 collisions were simulated in total. Of the, in this way collected, 6453 datapoints 69 were labeled as a collision while the rest was labeled  as no collision. The labeling was figured out by analysing video footage recorded during the test drive. The exact time of a collision in the video was matched with the time of the recorded sensor data to label data points correctly.
+
+\section{Solution strategy}
+\label{sec:Solution strategy}
+Combining the knowledge about the sensor data from section \ref{sec:Analysis of the time series data} and the objective as described in chapter \ref{ch:Introduction}, this chapter will narrow down on a concrete problem type and solution strategy. In the process limitations described in Chapter \ref{ch:Introduction} have to be considered. \newline
+Having a set of prelabeled sensor data as described in section \ref{sec:Analysis of the time series data} allows for a supervised machine learning approach.  Furthermore the existence of concrete data points which represent the state of the Sensorboard at a given time make it possible to base the recognition of collisions soly on those data points. The recognition of incidents can then in turn be formulated as the problem of deciding weather a given data point corresponds to a collision or no collision. A problem of this kind can be solved by binary classification. \newline
+Having specified the solution method to a binary classification model, concrete algorithms can be considered. In section \ref{sec:Limtations of Research}  the necessity of the an Apache Spark optimized algorithm and the usage of the Apache Spark library module MLLib is constituted. For the specific task of supervised binary classification the following methods are supported by the MLLib module:
+\begin{enumerate}
+\item Linear models
+\begin{enumerate}
+\item Linear SVM
+\item Logistic regression
+\end{enumerate}
+\item Decision tree
+\item Ensemble of decision trees
+\begin{enumerate}
+\item Random forest
+\item Gradient-boosted trees
+\end{enumerate}
+\item Naive Bayes
+
+\end{enumerate}
+
+Only the possible algorithms mentioned here will be parameterized and trained on the  collected data in chapter \ref{ch:Algorithm configuration}.   \newline
+To assess the performance of resulting models a clear metric will be used for comparison. This metric has to represent the unequal importance of detecting a collision and preventing false alarms. As mentioned in section \ref{sec:Objective} the act of detecting a collision that actually happened (true positives) is more important than preventing the detection of collision that didn't happen (false positives). In a classification setting the effectiveness in detecting collision that actually happened is described by recall. The effectiveness in preventing the detection of collision that didn't happen is described by precision. The metric that will be used to represent the unequal relationship between precision and recall is a f\textsubscript{2}-score. This metric puts more weight on the recall of a model.
 
