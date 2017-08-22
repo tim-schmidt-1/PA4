@@ -24,7 +24,86 @@ After this process is done the hyper-parameters that resulted in the highest f\t
 For the each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
 
 \subsection*{Linear SVM}
+The tunable hyper-parameters for the the linear SVM classifier is the regularization. 
+\begin{itemize}
+\item{\textbf{l1 regularization:}}\\
+\\
+\item{\textbf{l2 regularization:}}  \\
+\\
+\end{itemize}
+
+The hyper-parameter search reveals the following results for the two regularization approaches: \\
+
+\pgfplotsset{width=1.1\textwidth, height=0.5\textwidth}
+
+\begin{tikzpicture}
+\begin{axis}[
+ybar,
+enlargelimits=0.15,
+legend style={at={(0.5,-0.15)},
+anchor=north,legend columns=-1},
+xlabel={Maximal depth},
+ylabel={f\textsubscript{2}-score},
+symbolic x coords={l1,l2},
+xtick=data,
+nodes near coords,
+nodes near coords align={vertical},
+]
+\addplot coordinates {(l1,0.770476190476)(l2,0.75619047619)};
+
+\addplot coordinates {(l1,0.983333333333)(l2,0.98)};
+
+\addplot coordinates {(l1,0.931845691305)(l2,0.925231866825)};
+
+\legend{Precission, Recall, f\textsubscript{2}-score}
+\end{axis} 
+\end{tikzpicture}
+\\
+
+
+The best performing SVM model reaches a maximal {f\textsubscript{2}-score of \textbf{0.93} (precision:  0.77, recall: 0.98) with the following hyper-parameter:\\
+Regularization: \qquad  \qquad \textbf{l1 regularization}
+
 \subsection*{Logistic regression}
+The tunable hyper-parameters for the the logistic regression classifier is the regularization. 
+\begin{itemize}
+\item{\textbf{l1 regularization:}}\\
+\\
+\item{\textbf{l2 regularization:}}  \\
+\\
+\end{itemize}
+
+The hyper-parameter search reveals the following results for the two regularization approaches: \\
+
+\pgfplotsset{width=1.1\textwidth, height=0.5\textwidth}
+
+\begin{tikzpicture}
+\begin{axis}[
+ybar,
+enlargelimits=0.15,
+legend style={at={(0.5,-0.15)},
+anchor=north,legend columns=-1},
+xlabel={Maximal depth},
+ylabel={f\textsubscript{2}-score},
+symbolic x coords={l1,l2},
+xtick=data,
+nodes near coords,
+nodes near coords align={vertical},
+]
+\addplot coordinates {(l1,0.820952380952)(l2,0.820952380952)};
+
+\addplot coordinates {(l1, 0.9575)(l2, 0.9575)};
+
+\addplot coordinates {(l1,0.926673590255)(l2,0.926673590255)};
+
+\legend{Precission, Recall, f\textsubscript{2}-score}
+\end{axis} 
+\end{tikzpicture}
+\\
+
+
+The best performing logistic regression model reaches a maximal {f\textsubscript{2}-score of \textbf{0.93} (precision:  0.82, recall:0.95) independent of which regularization is used.
+
 \subsection*{Decision tree}
 The tunable hyper-parameters for the decision tree algorithm are:
 \begin{itemize}
@@ -76,6 +155,109 @@ Maximal depth: \qquad \textbf{2}
 
 
 \subsection*{Random forest}
+
+The tunable hyper-parameters for the random forest classifier are:
+\begin{itemize}
+
+\item{\textbf{Number of trees}}\\
+The number of trees that are build during the training phase to act as an ensemble of (randomized) decision trees.\\
+The parameter space for the number of threes is chosen \textbf{from 2 to 10} (inclusive). 
+
+\item{\textbf{Impurity}}\\
+The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
+Two impurity measures for classification are provided:\\
+\textbf{Gini impurity:}  \\
+$\sum_{i=1}^{C} f\textsubscript{i}(1-f\textsubscript{i}) $ \\
+C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
+\textbf{Entropy:}\\
+$\frac{1}{N}\sum_{i=1}^{C} -f\textsubscript{i}\log(f\textsubscript{i}) $ \\
+C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
+\item{\textbf{Maximal depth}}\\
+The maximal depth determines a limit of growth for a decision tree. This consequentially limits the number of nodes or decisions that are possible. It represents a stopping criteria. \\
+The parameter space for the maximal depth is chosen \textbf{from 1 to 10} (inclusive). 
+\end{itemize}
+
+The hyper-parameter search reveals the following results: \\
+
+\usepgfplotslibrary{colorbrewer}
+
+\begin{tikzpicture}
+\begin{axis}
+% this yields also a 3x4 matrix:
+\addplot3 [surf] coordinates {
+
+(1,2, 0.81117893612451164)	(2,2, 0.98319473319473327)	(3,2, 0.96274692738291667)	(4,2, 0.98534668438660011)	(5,2, 0.96059017776121025)	(6,2, 0.95830952778471323)	(7,2, 0.95830952778471323)	(8,2, 0.90483500331717981)	(9,2, 0.93734861699850558)	(10,2, 0.91339954553855851)
+(1,3, 0.8004367390538728)	(2,3, 0.96378418088674134)	(3,3, 0.9384741160763842)	(4,3, 0.90561827117871407)	(5,3, 0.93275566347297345)	(6,3, 0.87275176788264619)	(7,3, 0.92428232635237662)	(8,3, 0.88400307233714881)	(9,3, 0.94119766906916114)	(10,3, 0.93067599248707811)
+(1,4, 0.81514717363142675)	(2,4, 0.98811899147469606)	(3,4, 0.98811899147469606)	(4,4, 0.95358707092656092)	(5,4, 0.93986843414593968)	(6,4, 0.91975074977786109)	(7,4, 0.9180030861031705)	(8,4, 0.96551365397259359)	(9,4, 0.97421692878484434)	(10,4, 0.94439542738854887)
+(1,5, 0.80043673905387258)	(2,5, 0.9770886843607306)	(3,5, 0.94161524732555246)	(4,5, 0.9611445484394654)	(5,5, 0.95830952778471323)	(6,5, 0.94255336962175351)	(7,5, 0.91256930801135139)	(8,5, 0.89691214952918386)	(9,5, 0.91980882429707833)	(10,5, 0.87226968189766674)
+(1,6, 0.81270872684963535)	(2,6, 0.98534668438660011)	(3,6, 0.93032277257176865)	(4,6, 0.95190637408300693)	(5,6, 0.96378418088674134)	(6,6, 0.93059889012759778)	(7,6, 0.95830952778471323)	(8,6, 0.94459748922696507)	(9,6, 0.93116045949736315)	(10,6, 0.95190463924901969)
+(1,7, 0.8004367390538728)	(2,7, 0.96566736183524504)	(3,7, 0.9664694411187349)	(4,7, 0.94563619097216911)	(5,7, 0.94251053418248987)	(6,7, 0.93314228648343533)	(7,7, 0.94310117560504569)	(8,7, 0.92122817429787718)	(9,7, 0.94459748922696507)	(10,7, 0.90517023875540015)
+(1,8, 0.81270872684963535)	(2,8, 0.98534668438660011)	(3,8, 0.95049758148667896)	(4,8, 0.91672954863663902)	(5,8, 0.95231889125990454)	(6,8, 0.93319739904323273)	(7,8, 0.95448189972647135)	(8,8, 0.92868907146893775)	(9,8, 0.90581429466917407)	(10,8, 0.92474746660725948)
+(1,9, 0.8004367390538728)	(2,9, 0.98811899147469606)	(3,9, 0.96599764220453888)	(4,9, 0.94402186942380006)	(5,9, 0.93059889012759778)	(6,9, 0.94697851454944548)	(7,9, 0.90569476935177529)	(8,9, 0.90323674481832927)	(9,9, 0.91480794049947445)	(10,9, 0.91480794049947445)
+(1,10, 0.81270872684963535)	(2,10, 0.98811899147469606)	(3,10, 0.98226283015588589)	(4,10, 0.97941981556114444)	(5,10, 0.93558269120051019)	(6,10, 0.93319739904323273)	(7,10, 0.9568629756569883)	(8,10, 0.94201701404779536)	(9,10, 0.91975074977786109)	(10,10, 0.96323617072007628)
+
+
+};
+\end{axis}
+\end{tikzpicture}
+\\
+The best performing decision tree model reaches a maximal {f\textsubscript{2}-score of \textbf{0.99} (precision:  0.94, recall: 1.0) with the following hyper-parameters:\\
+Number of trees:  \qquad \textbf{4}\\
+Impurity: \qquad  \qquad \textbf{Entropy} \\
+Maximal depth: \qquad \textbf{2} or \textbf{3}\\
+or\\
+Number of trees:  \qquad \textbf{9} or \textbf{10}  \\
+Impurity: \qquad  \qquad \textbf{Entropy} \\
+Maximal depth: \qquad \textbf{2} 
+
 \subsection*{Gradient-boosted trees}
+
+The tunable hyper-parameters for the decision tree algorithm are:
+\begin{itemize}
+\item{\textbf{Loss function}}\\
+The loss function is used for minimization during gradient boosting. The loss function provided are: \\
+\textbf{LogLoss}\\
+\textbf{Least Squares Error}\\
+\textbf{Least Absolute Error}\\
+
+\item{\textbf{Maximal depth}}\\
+The maximal depth determines a limit of growth for a decision tree. This consequentially limits the number of nodes or decisions that are possible. It represents a stopping criteria. \\
+The parameter space for the maximal depth is chosen \textbf{from 1 to 10} (inclusive). 
+\end{itemize}
+
+The hyper-parameter search reveals the following results: \\
+
+\pgfplotsset{width=1.1\textwidth, height=0.5\textwidth}
+
+\begin{tikzpicture}
+\begin{axis}[
+ybar,
+enlargelimits=0.15,
+legend style={at={(0.5,-0.15)},
+anchor=north,legend columns=-1},
+xlabel={Maximal depth},
+ylabel={f\textsubscript{2}-score},
+symbolic x coords={1,2,3,4,5,6,7,8,9,10},
+xtick=data,
+nodes near coords,
+nodes near coords align={vertical},
+]
+\addplot coordinates {
+(1,0.96997949506600001 )	(2, 0.94327866731360188 )	(3, 0.92302084349494373 )	(4, 0.90371571783336502 )	(5, 0.90105794238683135 )	(6, 0.90105794238683135 )	(7, 0.90105794238683135 )	(8, 0.90105794238683135 )	(9, 0.90105794238683135 )	(10, 0.90105794238683135 )
+};
+\addplot coordinates {
+(1, 0.95999967877678194 )	(2, 0.92302084349494373 )	(3, 0.90371571783336502 )	(4, 0.90233186341839555 )	(5, 0.93494485234132829 )	(6, 0.90105794238683135 )	(7, 0.90105794238683135 )	(8, 0.90105794238683135 )	(9, 0.90105794238683135 )	(10, 0.90105794238683135 )
+};
+\addplot coordinates {(1, 0.80772735483432512 )	(2, 0.97329459969909415 )	(3, 0.92302084349494373 )	(4, 0.90233186341839555 )	(5, 0.89344992226949638 )	(6, 0.90105794238683135 )	(7, 0.90105794238683135 )	(8, 0.90105794238683135 )	(9, 0.90105794238683135 )	(10, 0.90105794238683135)
+};
+\legend{logLoss, Least Squares Error, Least Absolute Error}
+\end{axis} 
+\end{tikzpicture}
+\\
+The best performing Gradient-boosted tree classifier reaches a maximal f\textsubscript{2}-score of \textbf{  0.97} (precision:  0.96, recall:  0.98) with the following hyper-parameters:\\
+Loss function:  \qquad \textbf{Least Absolute Error}\\
+Maximal depth: \qquad \textbf{2}
+
+
 \subsection*{Naive Bayes}
  
