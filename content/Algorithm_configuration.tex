@@ -24,13 +24,17 @@ After this process is done the hyper-parameters that resulted in the highest f\t
 For the each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
 
 \subsection*{Linear SVM}
-The tunable hyper-parameters for the the linear SVM classifier is the regularization. 
-\begin{itemize}
-\item{\textbf{l1 regularization:}}\\
+The tunable hyper-parameters for the the linear SVM classifier is the regularization. \\
+\textbf{L1 regularization:}\\
+$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
+ L1 regularization is a loss function that minimizes the sum of the absolute differences of target and estimated value.
 \\
-\item{\textbf{l2 regularization:}}  \\
+\textbf{L2 regularization:}  \\
+$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for  y\textsubscript{i}.\\
+ L2 regularization is a loss function that minimizes the square of the absolute differences of target and estimated value.
 \\
-\end{itemize}
 
 The hyper-parameter search reveals the following results for the two regularization approaches: \\
 
@@ -42,8 +46,7 @@ ybar,
 enlargelimits=0.15,
 legend style={at={(0.5,-0.15)},
 anchor=north,legend columns=-1},
-xlabel={Maximal depth},
-ylabel={f\textsubscript{2}-score},
+xlabel={Regularization},
 symbolic x coords={l1,l2},
 xtick=data,
 nodes near coords,
@@ -66,12 +69,17 @@ Regularization: \qquad  \qquad \textbf{l1 regularization}
 
 \subsection*{Logistic regression}
 The tunable hyper-parameters for the the logistic regression classifier is the regularization. 
-\begin{itemize}
-\item{\textbf{l1 regularization:}}\\
 \\
-\item{\textbf{l2 regularization:}}  \\
+\textbf{L1 regularization:}\\
+$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
+ L1 regularization is a loss function that minimizes the sum of the absolute differences of target and estimated value.
 \\
-\end{itemize}
+\textbf{L2 regularization:}  \\
+$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
+ L2 regularization is a loss function that minimizes the square of the absolute differences of target and estimated value.
+\\
 
 The hyper-parameter search reveals the following results for the two regularization approaches: \\
 
@@ -83,8 +91,7 @@ ybar,
 enlargelimits=0.15,
 legend style={at={(0.5,-0.15)},
 anchor=north,legend columns=-1},
-xlabel={Maximal depth},
-ylabel={f\textsubscript{2}-score},
+xlabel={Regularization},
 symbolic x coords={l1,l2},
 xtick=data,
 nodes near coords,
@@ -182,7 +189,10 @@ The hyper-parameter search reveals the following results: \\
 \usepgfplotslibrary{colorbrewer}
 
 \begin{tikzpicture}
-\begin{axis}
+\begin{axis}[
+xlabel={Maximal depth},
+ylabel={Number of trees},
+zlabel={f\textsubscript{2}-score}]
 % this yields also a 3x4 matrix:
 \addplot3 [surf] coordinates {
 
@@ -260,4 +270,33 @@ Maximal depth: \qquad \textbf{2}
 
 
 \subsection*{Naive Bayes}
+
+The tunable hyper-parameters for the the Naive Bayes classifier is a $\lambda$ -value used for additive smoothing.  
+The parameter space for $\lambda$ is chosen \textbf{from 0.1 to 10.0} (inclusive).  \\
+
+The hyper-parameter search reveals the following results for the two regularization approaches: \\
+
+\pgfplotsset{width=1.1\textwidth, height=0.5\textwidth}
+
+\begin{tikzpicture}
+\begin{axis}[
+ybar,
+enlargelimits=0.15,
+legend style={at={(0.5,-0.15)},
+anchor=north,legend columns=-1},
+xlabel={$\lambda$},
+ylabel={f\textsubscript{2}-score},
+symbolic x coords={1,2,3,4,5,6,7,8,9,10},
+xtick=data,
+nodes near coords,
+nodes near coords align={vertical},
+]
+\addplot coordinates {
+
+};
+\end{axis} 
+\end{tikzpicture}
+\\
+The best performing naive bayes classifier reaches a maximal f\textsubscript{2}-score of \textbf{  } (precision:  , recall: ) with the hyper-parameter:\\
+$\lambda$ :  \qquad \textbf{  }\\
  
