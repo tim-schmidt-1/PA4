@@ -46,11 +46,15 @@ is non exhaustive
 \section{Algorithms}
 \begin{itemize}
 \item{hyper-parameters}
+\item{loss function / regularization}
+\item{varance/over/underfitting}
+\item{linear/non linear}
+\item{may be oversimplyfied because of rahmen der arbeit}
 % http://jmlr.csail.mit.edu/papers/volume13/bergstra12a/bergstra12a.pdf 2
 \end{itemize}
 \subsection{Linear support vector classifier}
-In this chapter the support vector classifier will be introduced. The method was developed in the 1990’s and is often used as one of the best performing 'out of the box' classifiers. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
-
+In this chapter the support vector classifier will be introduced. The method was developed in the 1990’s and is often used as one of the best performing 'out of the box' classifiers. The goal of a linear support classifier is to find a function for a \emph{hyperplane} that splits the data points of two classes as best as possible. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
+A model based on a support vector classifier is linear.
 \subsubsection{Hyperplane classification}
 The goal of the maximal margin classifier is to classify data by finding a hyperplane that optimally separates two classes in a dataset. Data points are either in class $y=f(x)=-1)$ or $y=f(x)=1)$. 
 \\
@@ -123,8 +127,10 @@ With a support vector classifier it's now possible to create a model $h$ that ca
 %An introduction to statistical learning
 
 \subsection{Logistic regression}
+In this chapter the logistic regression will be introduced. The goal of logistic regression is to create a classifier which predicts the probability for a given data point  to belong to a certain class. A model based on a support vector classifier is linear.
+\\
 
-The goal of logistic regression is to create a classifier which predicts the probability for a given data point $X$ to belong to a certain class $c$. This probability	 of a class $c$ under the condition of $X$ can be written as
+The probability of a data point $X$ with $p$ parameters belonging to a class can be written as the probability of a class $c$ under the condition of $X$:
 \begin{equation} \label{eq:4}
 p(c|X) \in [0,1]
 \end{equation}
@@ -143,7 +149,7 @@ f(x)=\frac{1}{1+e^-x}=\frac{e^x}{1+e^x}
 \end{equation}
 Utilizing the linear regression in equation \ref{eq:5} the output is now transformed with the standart logistic function:
 
-\begin{equation} \label{eq:10}
+\begin{equation} \label{eq:11}
 h(x)=\frac{e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n}}{1+e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + + \beta_n x_n}}
 \end{equation}
 
@@ -154,11 +160,139 @@ This way logistic regression creates a model which predicts the probability of a
 % https://www.jstor.org/stable/pdf/2983890.pdf?refreqid=excelsior:3ac2d6a000fa78f731ab46b8659528c0
 D. R. Cox, The Regression Analysis of Binary Sequences 1958
 \subsection{Decision tree}
+%Classification and Regression Trees Leo Breiman, Jerome Friedman, Charles J. Stone, R.A. Olshen (1984)
+% http://hunch.net/~coms-4771/quinlan.pdf
+% https://pdfs.semanticscholar.org/f1c3/683cacc3dc7898f3603753af87565f8ad677.pdf
+
+In this chapter the decision tree will be introduced. The goal of a decision tree is to create a classifier which splits the segments the feature space into subspaces and classifies new data point according to which subspace it is in. A model based on a decision tree is non-linear.
+\\
+
+The task that a decision tree accomplishes is splitting the feature space into meaningful slices with which the create model can classify new data points.
+This is done by splitting the feature space multiple times recursively. That means After a split two created subspaces are then further split. This recursive splitting can also be visualized in a binary tree. This binary tree is called a \emph{decision tree}. Each node represents a split of the feature (sub-)space.  Only the terminal nodes don't represent a split and rather an area of the feature space that corresponds to a specific class. First the decision making process is explained. Then the mapping of a terminal node to a class is explained.
+\\
+The tree is constructed iteratively and top-down (starting at the root of the tree). This is often called \emph{recursive binary splitting}. Construction follows a \emph{greedy} approach, meaning a node is created only considering the benefit that comes with a certain splitting rule for this split, not looking into the future and assessing the benefit of a certain splitting rule for the later tree.
+\\
+Splitting a space of any dimension into two subspaces needs two aspects: The axis on which the split is done and the place on the axis where the split is done. Accordingly a splitting rule can be written as follows:
+
+\begin{equation} \label{eq:12}
+a \leq c
+\end{equation}
+where $a$ represents one of $p$ axis in an p-dimensional feature space and c represents a value in the domain of axis $a$.
+This decision rule splits the feature space orthogonal to the axis $a$ where the value$ of a = c$.
+\\
+The question arises how this decision rule should be chosen for any given feature (sub-)space.
+In the ideal case the a split is placed in a way that separates most data point from one class from the data points of the other class and leaves two most 'pure' subspaces. The \emph{impurity} of a subspace is most commonly measured by the following metrics. 
+\\
+\textbf{Gini impurity:}  \\
+\begin{equation} \label{eq:13}
+\sum_{i=1}^{C} f\textsubscript{i}(1-f\textsubscript{i})
+\end{equation}
+$C$ is the number of unique labels and f\textsubscript{i} is the frequency of label $i$ in a created feature subspace. For binary classification C is maximal 2.\\
+\textbf{Entropy:}
+\begin{equation} \label{eq:14}
+\frac{1}{N}\sum_{i=1}^{C} -f\textsubscript{i}\log(f\textsubscript{i})
+\end{equation}
+$C$ is the number of unique labels and f\textsubscript{i} is the frequency of label $i$ in a created feature subspace. For binary classification C is maximal 2. \\
+\\
+To reach the highest 'purity', either one of the metrics has to be minimized. \\
+Finding the optimal split requires finding $a$ and $c$ such that the splitting rule  $a \leq c$ minimizes the sum of the impurity measures for both forming feature subspaces. The impurity measures commonly used are Ginni impurity (equation \ref{eq:13}) and Entropy (equation \ref{eq:13}). 
+\\
+The iterative splitting or growing of the tree is stopped when either a certain height of the tree is reached, a minimal number of trainings data points in one node is surpassed or the purity of a subspace can't be significantly improved by another split.
+\\
+
+Now that a decision tree is constructed every terminal node is assigned a class prediction. The class prediction of a terminal node is simply the most common class of the data points in the feature subspace that the terminal node represents.
+\\
+
+A decision tree model can classify any new data point by passing it from the root of the decision tree to a terminal node, which holds the class prediction, by simply following the decision rules either to the right to the left child node (depending on how the tree is implemented) if the decision rule ( as seen in equation \ref{eq12}) holds and to the other side if it doesn't.\\
+Decision trees have the advantage that the decision rules of a model are easy to understand and can be displayed graphically. 
+But a decision tree has also disadvantages, especially a high variance is often occurring, which leads to overfitting. This problem is counteracted by using \emph{decision tree assembles} like \emph{random forest} or \emph{boosted trees}. The two algorithms are explained in the following.
+
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
 \subsection{Random forest}
+
+In this chapter random forests will be introduced. The method utilizes decision trees and creates an assemble of trees improving, among others, on the high variance of a single decision tree. 
+A model based on a random forest is non-linear.
+\\
+To reduce variance the method uses the fact that averaging a set of observations reduces variance in the resulting observation.
+\emph{Bagging} (also called \emph{bootstrap aggregation} utilizes exactly that fact. From the singe training set $\Xi$, $B$ subset are being created. On every subset of $\Xi$ a decision tree is constructed. The construction of a tree on a single bootstrapped subset is described below. The different models will then all vote in a \emph{majority vote} to come to a conclusion.
+\\
+Additional to bagging the random forest has another speciality when training models. Only bagging decision trees would lead to very similar trees.
+Random forest prevents this during the tree construction phase. A decision tree algorithm decides on a split, in particular on the axis or feature, and on the value where the split is done. A random forest algorithm prohibits the decision for some axis, each time a decision rule is created. In other words, for every decision rule there is a randomly chosen subset of all axis or features possible to choose from.\\
+This way the construction algorithm is encouraged to make splits that are not always optimal but may lead to a better performing decision the in the long run by chance.
+\\
+To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point.
+The method reduces variance and minders the risk of overfitting. Another method that improves prediction rules is boosting and will be discussed in the next chapter.
+
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (72)
-\subsection{Gradient-boosted trees}
+\subsection{Boosted trees}
+
+In this chapter Boosted trees will be introduced. The method also utilizes decision trees and tackles the problem of the high variance of a single decision tree. 
+...
+A model based on a random forest is non-linear.
+
+bagging
+Boosting works in a similar way, except that the trees are grown sequentially
+grown using information from previously grown trees. Boosting does not involve bootstrap sampling; instead each tree is fit on a modified version of the original data set.
+learns slowly. Given the current model, we fit a decision tree to the residuals from the model
+
+
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
 \subsection{Naive Bayes}
+In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point.
+A model based on naiv bayes is non-linear.
+
+ (class conditional independence) simplify the computation involved and, in this sense, is considered ”naive”.
+Baye's Theorem:
+Our Problem:  p(H|X)
+H hypotesis, X obersavtion
+(post priori)
+P(H) is the a priori probability of H.
+
+Baye's Theorem:
+\begin{equation} \label{eq:4}
+p(H|X)=\frac{p(X|H} P(H)}{P(X)}
+\end{equation}
+
+H is all C_i
+
+search C_i with highest p(C_i|X) for all i
+
+maximise:
+p(C_i|X)=\frac{p(X|C_i} P(C_i)}{P(X)}
+P(X) is allways the same
+maximise:
+p(X|C_i} P(C_i)
+
+
+P(C_i) is known because of the proption of pos and neg samples in dataset
+maximise:
+P(X|C_i)
+
+because X has many features it is to expensive to compute all possible  P(X|C_i)
+
+naiv assumption: class conditional independence
+X_1..p is indipendent from X_1..p
+
+This means:
+\begin{equation} \label{eq:4}
+p(X|X_i) \approx prod_{k=1}^{p}p(x_k|C_i)
+\end{equation}
+
+If Ak is continuous-valued, then we typically assume that
+the values have a Gaussian distribution with a mean μ and
+standard deviation
+
+calculate the mean and standart derivation of Attribute (X_l element) A_k.
+
+xk|Ci) = g(xk, μCi , Ci ).
+We need to compute μCi and Ci , which are the mean and
+standard deviation of values of attribute Ak for training
+samples of class Ci
+
+prediction:
+class that maximizes P(X|C_i)P(C_i) for each C_iwins
+
+
+%http://rizalespe.lecture.ub.ac.id/files/2015/10/DM-04-1-Klasifikasi.pdf
 % http://researchweb.watson.ibm.com/people/r/rish/papers/RC22230.pdf (IBM ressource)
 info PDF in quellen
