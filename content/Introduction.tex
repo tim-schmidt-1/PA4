@@ -12,25 +12,25 @@ The Sensorboard is such a showcase. A physical skateboard is equipped with a Tex
 This showcase will be extended with machine learning applications to present the value machine learning algorithms can have on sensor data. The specific goal of that extension is to recognize collisions that happen to the Sensorboard and that indicate accidents. This recognition will be based solely on sensor data and  patterns in the time series data. For this IBM Bluemix services are used to showcase the capabilities of the platform. There are services which are requested to be demonstrated and used in the showcase. This is the IBM IoT Foundation, used to connect the Sensorboard to the platform. Moreover the IBM Data Science Experience should be used as a development environment for an underlying Apache Spark cluster, on which machine learning models will can be created.
 
 \section{Objective}
-A consumer grade skateboard is equipped with a Texas Instrument’s SensorTag. The Texas Instrument’s SensorTag collects acceleration data from the skateboard on three spacial axis. To process this data cloud services of IBM Bluemix are used. This especially includes the IBM Data Science Experience and an Apache Spark service. Consequently utilizing Apache Spark as a framework for cluster computing, machine learning models are trained using Apache Spark. This narrows down the selection of machine learning algorithms to the algorithms available in function library Apache Spark MLlib, which provides scalable algorithms, optimized to run on Apache Spark. 
+A consumer grade skateboard is equipped with a Texas Instrument’s SensorTag. The Texas Instrument’s SensorTag collects acceleration data from the skateboard on three spacial axis. To process this data cloud services of IBM Bluemix are used. This especially includes the IBM Data Science Experience and an Apache Spark service. Consequently utilizing Apache Spark as a framework for cluster computing, machine learning models are trained using Apache Spark. This narrows down the range of machine learning methods to the ones available for processing on Apache Spark. Such methods are provided by the Apache Spark MLlib function library. 
 \newline
 This paper investigates on the feasibility of machine learning algorithms for collision detection in the above described setting and identifies, if feasible, the best performing algorithm under the described conditions.   \newline
 The  scenario of impact detection that may indicate accidents requires a higher focus on detecting an accident than on preventing false alarms. A metric is found to represents this unequal relationship in the assessment of algorithm performance.
 
 \section{Limitations of the Research}
-The technologies described - the Texas Instrument’s SensorTag, the IBM Bluemix services and programming libraries - are a given for the project by IBM. Therefore the decisions for those and no other technologies will not be discussed and no evaluation of alternatives will be conducted in this paper.
+The technologies described - the Texas Instrument’s SensorTag, the IBM Bluemix services and function libraries - are a given for the project by IBM. Therefore the decisions for those and no other technologies will not be discussed and no evaluation of alternatives will be conducted in this paper.
 \\
 The findings will only be acquired and applicable for the specific hardware and configuration described in the paper. Findings can not be transferred to other vehicles, sensors, configurations or any other setup than the one described.
 \\
 The data which is used to come to decisions and to train models is generated in experiments, which are conducted solely for this reason. No other sensor data of skateboards or other vehicles are used in the considerations of this paper.
-The machine learning algorithms examined only include algorithms currently provided by the function library Apache Spark MLlib. A list of relevant algorithms currently provided can be seen in the appendix in chapter ~\ref{ch:appendix}.
+The machine learning algorithms examined only include algorithms currently provided by the function library Apache Spark MLlib. 
 
 \section{Organization of the Research}
-The chapter 'Theory' introduces the topic of machine learning. Relevant machine learning algorithms and evaluators are explained with sufficient theoretical and mathematical background information. The goal of the chapter is to create a basic understanding for methods and metrics this paper investigates.
+The chapter 'Theory' introduces the topic of machine learning. Relevant machine learning theory is explained with sufficient theoretical and mathematical background information. The goal of the chapter is to create a basic understanding for methods and metrics this paper investigates.
 \\
-In the following chapter 'Analysis of the pattern recognition problem', the pattern recognition problem will be analysed in detail. The goal of the chapter is to define specific possible solutions for the problem. 
+In the following chapter 'Analysis of the pattern recognition problem', the pattern recognition problem will be analysed in detail. The goal of the chapter is to define specific possible solutions for the identified problem. 
 \\
 The chapter 'Algorithm configuration' brings together the theoretical knowledge about machine learning and possible solution strategies. It is shown how algorithms are best configured and applied for the problem. The goal of the chapter is to generate a comparable result for the different possible solutions. 
 \\
 In the chapter 'Evaluation', the results are then compared to each other. The goal of this chapter is to answer the question of whether machine learning algorithms are feasible for collision detection. If feasible, a winning solution that is best performing under the considered conditions is identified. A conclusions about the results is drawn. \\
-In the end, the chapter 'Reflection and outlook' gives presents a critical reflection of the results and a proposal on possible further research and development.
+In the end, the chapter 'Reflection and outlook' presents a critical reflection of the results and a proposal on possible further research and development.
