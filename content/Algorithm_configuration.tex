@@ -1,27 +1,27 @@
 \chapter{Algorithm configuration}
 \label{ch:Algorithm configuration}
-Many of the methods proposed in chapter \ref{ch:Analysis of the pattern recognition problem} require \emph{hyper-parameters}.  A hyper-parameter is a setting parameter that varies aspects of the algorithm and might lead to better or worse results.To ensure that all the algorithms are comparable with each other this chapter goes over the process of finding the optimal hyper-parameters for every approach. A comparable score is assigned to every algorithm under the condition of optimal hyper-parameters.
+Many of the methods proposed in chapter \ref{ch:Analysis of the pattern recognition problem} require \emph{hyper-parameters}.  A hyper-parameter is a setting parameter that varies aspects of the algorithm and might lead to better or worse results.To ensure that all the algorithms are comparable with each other this chapter goes over the process of finding the optimal hyper-parameters for every approach. In the process a f\textsubscript{2}-score is assigned to every algorithm under the condition of optimal hyper-parameters.
 \section*{Hyper-parameter tuning}
-The process of searching and finding good hyper-parameters for a given algorithm is called hyper-parameter tuning. Searching for good hyper parameters takes the following aspects to be considered:
+The process of searching and finding good hyper-parameters for a given algorithm is called \emph{hyper-parameter tuning}. Searching for good hyper parameters takes the following aspects to be considered:
 \begin{itemize}
 \item{ \textbf{an estimator}} \\
-The estimator in this case is a binary classifier. The 8 different binary classifiers have to be considered as mentioned in chapter \ref{ch:Analysis of the pattern recognition problem}.
+The  \emph{estimator} in this case is a binary classifier. The 8 different binary classifiers have to be considered as mentioned in chapter \ref{ch:Analysis of the pattern recognition problem}.
 \item{\textbf{a parameter space}} \\
-The parameter space defines a set of parameters or combination of parameters that will be tested. From this set one element will be chosen as most fitting. Because every algorithm requires different parameters, the parameter space is different for every algorithm. The parameter space will be defined in the sections below for every algorithm. 
+The  \emph{parameter space} defines a set of parameters or combination of parameters that will be tested. From this set one element will be chosen as most fitting. Because every algorithm requires different parameters, the parameter space is different for every algorithm. The parameter space will be defined in the sections below for every algorithm. 
 \item{\textbf{a method for searching or sampling candidates}}\\
 The method that is chosen is grid search. Grid search is a brute force search, which uses an exhaustive searching through a defined parameter space. Models and iteratively trained and evaluated by a score function. The model scores are then compared. The hyper-parameters that produced the best performing model will be chosen as optimal ones for the algorithm.
 \item{\textbf{a cross-validation scheme}} \\
-The cross-validation scheme used is a k-fold validation, with k=10.
+The  \emph{cross-validation scheme} used is a k-fold validation, with k=10.
 \item{\textbf{a score function}}\\
 As mentioned in chapter \ref{ch:Analysis of the pattern recognition problem}  a  f\textsubscript{2}-score will be used to evaluate the models in the end. Our goal for the hyper-parameter tuning is thereby also to maximise the  f\textsubscript{2}-score. For that reason the  f\textsubscript{2}-score is used as a score function.
 \end{itemize}
 
-For the hyper-parameter search no external functions or libraries are used. The search algorithm is implemented in the following way.\\ For a given estimator (in this case one of the possible classification algorithms) the parameter space is defined manually for every hyper-parameter of a given estimator.\\
+For the hyper-parameter search no external functions or libraries are used. The search algorithm is implemented in the following way.\\ For the given estimator (one of the possible classification algorithms) the parameter space is defined manually for every hyper-parameter.\\
 Models are now repeatedly trained by iterating through every combination of hyper-parameters in the parameter spaces.\\
 For every trained model a  k-fold validation, with k=10, is performed.\\
 During the k-fold validation, the f\textsubscript{2}-score is calculated.\\
 After this process is done the hyper-parameters that resulted in the highest f\textsubscript{2}-score are chosen.\\
-For the each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
+In the following for each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
 
 \subsection*{Linear SVM}
 The tunable hyper-parameters for the the linear SVM classifier is the regularization. \\
@@ -271,32 +271,8 @@ Maximal depth: \qquad \textbf{2}
 
 \subsection*{Naive Bayes}
 
-The tunable hyper-parameters for the the Naive Bayes classifier is a $\lambda$ -value used for additive smoothing.  
-The parameter space for $\lambda$ is chosen \textbf{from 0.1 to 10.0} (inclusive).  \\
+The tunable hyper-parameters for the the Naive Bayes classifier is a $\lambda$ -value used for additive smoothing. Since the hyper-parameter search with $\lambda=[0.1,10.0]$ didn't reveal any differences in performance the hyper-parameter is not going to be regarded and will not be discussed further in this paper. \\
 
-The hyper-parameter search reveals the following results for the two regularization approaches: \\
-
-\pgfplotsset{width=1.1\textwidth, height=0.5\textwidth}
-
-\begin{tikzpicture}
-\begin{axis}[
-ybar,
-enlargelimits=0.15,
-legend style={at={(0.5,-0.15)},
-anchor=north,legend columns=-1},
-xlabel={$\lambda$},
-ylabel={f\textsubscript{2}-score},
-symbolic x coords={1,2,3,4,5,6,7,8,9,10},
-xtick=data,
-nodes near coords,
-nodes near coords align={vertical},
-]
-\addplot coordinates {
-
-};
-\end{axis} 
-\end{tikzpicture}
-\\
-The best performing naive bayes classifier reaches a maximal f\textsubscript{2}-score of \textbf{  } (precision:  , recall: ) with the hyper-parameter:\\
+The naive bayes classifier reaches a f\textsubscript{2}-score of \textbf{ } (precision:  , recall: ) with the hyper-parameter:\\
 $\lambda$ :  \qquad \textbf{  }\\
  
