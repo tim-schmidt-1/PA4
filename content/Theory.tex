@@ -5,40 +5,28 @@ Historically computers had to be programmed on a specific task using domain know
 \\
 %https://www.forbes.com/sites/bernardmarr/2016/02/19/a-short-history-of-machine-learning-every-manager-should-read/#77bf286315e7
 
-This intention is often represented by a 'learning' \emph{input-output function}. Assume there exists function, $f$, which represents a true behaviour or correlation. The task of any machine learning algorithm is thereby to find a \emph{hypothesis function} $h$ that resembles the behaviour of f as closely as possible. Both $f$ and $h$ are function of a fixed length vector-valued input $X={x_1, x_2, ... , x_n}$ which has $n$ components. Those might be $n$ attributes of an observed object. An input $x$ is often referred to as a \emph{data point}. The components of a data point are the $x$ \emph{features} of $x$. 
+This intention is often represented by a 'learning' \emph{input-output function}. Assume there exists function, $f$, which represents a true behaviour or correlation. The task of any machine learning algorithm is thereby to find a \emph{hypothesis function} $h$ that resembles the behaviour of $f$ as closely as possible. A function $h$ is also called \emph{model}. Both $f$ and $h$ are function of a fixed length vector-valued input $X={x_1, x_2, ... , x_n}$ which has $n$ components. Those might be $n$ attributes of an observed object. An input $x$ is often referred to as a \emph{data point}. The components of a data point $x$ are the \emph{features} of $x$. 
 The features of a data point span the \emph{feature space}. The feature space refers to the $n$-dimensional space in which the features of a data point are represented.
 \\
 The function $h$ can be thought of as a device that has $X$ as an input and $h(X)$ as an output. The hypothesis function, h, is selected based on a trainings set, $\Xi$, of $m$ input vector examples.
 \\
 There are two major settings in machine learning. 
-
-The first setting is \emph{unsupervised learning}. In this case the trainings set of vectors $\Xi$ doesn't provide information about the value $f(X)$ . The goal of the unsupervised learning algorithms usually is to partition the training set into subset, $\Xi$ \textsubscript{1}, $\Xi$ \textsubscript{2}, ..., $\Xi$ \textsubscript{r}. An example for this unsupervised machine learning learning problem is \emph{clustering.}, which desired to find ways to find clusters in data and discovery relationships in the data.
-
-The second is  \emph{supervised learning} in which the values of $f$ for the samples in the training set $\Xi$ are known. This values of $f$ corresponding to a sample  The assumption is that a hypothesis $h$ is a good guess for $f$ when $h(X)$ agrees with the values of $f$ for the same samples.
-In supervised machine learning two main areas are distinguished, \emph{Regression} and \emph{Classification}. In Regression the hypothesis $h$ has a continuous output. Regression could for instance be used to approximate a function for a stock price and predict a future stock price as a numerical value on a continuous range of possible prices.
-Classification has a categorical output. Classification could be used to classify emails to either 
-
-An example of a supervised learning problem is classification, which will be discussed in the later in this chapter in more detail.
-
-%http://ai.stanford.edu/people/nilsson/MLBOOK.pdf 5/6/..
-
-
-
-
-Data point
-feature
-feature space
-dimensions
-feature vector
-
-\section{Classification}
-
-
-classification, inpu, representation, hypotesis, generalization:
-% http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 21
-
-classification application in pattern recognition 
+\\
+The first setting is \emph{unsupervised learning}. In this case the trainings set of vectors $\Xi$ doesn't provide information about the value $f(X)$ . The goal of the unsupervised learning algorithms usually is to partition the training set into subset, $\Xi$ \textsubscript{1}, $\Xi$ \textsubscript{2}, ..., $\Xi$ \textsubscript{r}. An example for unsupervised machine learning learning is \emph{clustering}, which finds clusters and discovers relationships in the data.
+\\
+The second is  \emph{supervised learning}, in which the values of $f$ for the samples in the training set $\Xi$ are known. The value of $f$ corresponding to a data point $x$ is also called the \emph{label} of $x$. A dataset with a label for every data point in it is referred to as a \emph{labelled} dataset. The assumption is that a hypothesis $h$ is a good guess for $f$ when $h(x_i)$ agrees with the values of $f(x_i)$ or the given labels for the majority of samples $x_i$ .
+%classification application in pattern recognition 
 % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6
+\\
+In supervised machine learning two main areas are distinguished, \emph{Regression} and \emph{Classification}. 
+\\
+In Regression the hypothesis $h$ has a continuous output. Regression could, for instance, be used to approximate a function for a stock price and predict a future stock price as a numerical value on a continuous range of possible prices.
+\\
+Classification has a categorical output. Classification could, for instance, be used to classify emails to either spam or no spam. It also finds application in patter recognition. % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6? 
+The case of an classification task that has a need to classify data into two distinguished classes is called \emph{binary classification}. The alternative case is \emph{multiclass classification}, which aims to classify data points into one of multiple different classes.
+
+%classification, inpu, representation, hypotesis, generalization:
+% http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 21
 
 \section{Evaluation of Classifiers}
 \begin{itemize}
