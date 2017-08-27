@@ -6,10 +6,10 @@ The process of searching and finding good hyper-parameters for a given algorithm
 \begin{itemize}
 \item{ \textbf{an estimator}} \\
 The  \emph{estimator} in this case is a binary classifier. The 8 different binary classifiers have to be considered as mentioned in chapter \ref{ch:Analysis of the pattern recognition problem}.
-\item{\textbf{a parameter space}} \\
-The  \emph{parameter space} defines a set of parameters or combination of parameters that will be tested. From this set one element will be chosen as most fitting. Because every algorithm requires different parameters, the parameter space is different for every algorithm. The parameter space will be defined in the sections below for every algorithm. 
+\item{\textbf{a hyper-parameter space}} \\
+The \emph{hyper-parameter space} defines a set of parameters or combination of hyper-parameters that will be tested. From this set one element will be chosen as most fitting. Because every algorithm requires different hyper-parameters, the hyper-parameter space is different for every algorithm. The hyper-parameter space will be defined in the sections below for every algorithm. 
 \item{\textbf{a method for searching or sampling candidates}}\\
-The method that is chosen is grid search. Grid search is a brute force search, which uses an exhaustive searching through a defined parameter space. Models and iteratively trained and evaluated by a score function. The model scores are then compared. The hyper-parameters that produced the best performing model will be chosen as optimal ones for the algorithm.
+The method that is chosen is grid search. Grid search is a brute force search, which uses an exhaustive searching through a defined hyper-parameter space. Models and iteratively trained and evaluated by a score function. The model scores are then compared. The hyper-parameters that produced the best performing model will be chosen as optimal ones for the algorithm.
 \item{\textbf{a cross-validation scheme}} \\
 The  \emph{cross-validation scheme} used is a k-fold validation, with k=10.
 \item{\textbf{a score function}}\\
@@ -116,9 +116,9 @@ The tunable hyper-parameters for the decision tree algorithm are:
 \begin{itemize}
 \item{\textbf{Impurity}}\\
 The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
-Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation):\\
+Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation).\\
 \textbf{Gini impurity} \\
-\textbf{Entropy:}
+\textbf{Entropy}
 \item{\textbf{Maximal depth}}\\
 The maximal depth determines a limit of growth for a decision tree. This consequentially limits the number of nodes or decisions that are possible. It represents a stopping criteria. \\
 The parameter space for the maximal depth is chosen \textbf{from 1 to 10} (inclusive). 
@@ -161,11 +161,9 @@ Maximal depth: \qquad \textbf{2}
 
 The tunable hyper-parameters for the random forest classifier are:
 \begin{itemize}
-
 \item{\textbf{Number of trees}}\\
 The number of trees that are build during the training phase to act as an ensemble of (randomized) decision trees.\\
 The parameter space for the number of threes is chosen \textbf{from 2 to 10} (inclusive). 
-
 \item{\textbf{Impurity}}\\
 The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
 Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation):\\

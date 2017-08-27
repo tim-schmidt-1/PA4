@@ -1,14 +1,14 @@
 \chapter{Theory}
+\label{ch:Theory}
 \section{Machine Learning}
-
 Historically computers had to be programmed on a specific task using domain knowledge of humans. Machine learning challenges this traditional way of programming. Rather than trough extensive domain knowledge, machine learning algorithms are used to autonomously learn from data and information. 
 \\
 %https://www.forbes.com/sites/bernardmarr/2016/02/19/a-short-history-of-machine-learning-every-manager-should-read/#77bf286315e7
 
-This intention is often represented by a 'learning' \emph{input-output function}. Assume there exists function, $f$, which represents a true behaviour or correlation. The task of any machine learning algorithm is thereby to find a \emph{hypothesis function} $h$ that resembles the behaviour of $f$ as closely as possible. A function $h$ is also called \emph{model}. Both $f$ and $h$ are function of a fixed length vector-valued input $X={x_1, x_2, ... , x_n}$ which has $n$ components. Those might be $n$ attributes of an observed object. An input $x$ is often referred to as a \emph{data point}. The components of a data point $x$ are the \emph{features} of $x$. 
+This intention is often represented by a 'learning' f\emph{input-output function}. Assume there exists function, $f$, which represents a true behaviour or correlation. The task of any machine learning algorithm is thereby to find a \emph{hypothesis function} $h$ that resembles the behaviour of $f$ as closely as possible. A function $h$ is also called \emph{model}. Both $f$ and $h$ are function of a fixed length vector-valued input $X={x_1, x_2, ... , x_n}$ which has $n$ components. Those might be $n$ attributes of an observed object. An input $x$ is often referred to as a \emph{data point}. The components of a data point $x$ are the \emph{features} of $x$. 
 The features of a data point span the \emph{feature space}. The feature space refers to the $n$-dimensional space in which the features of a data point are represented.
 \\
-The function $h$ can be thought of as a device that has $X$ as an input and $h(X)$ as an output. The hypothesis function, h, is selected based on a trainings set, $\Xi$, of $m$ input vector examples.
+The function $h$ can be thought of as a device that has $X$ as an input and $h(X)$ as an output. The hypothesis function, $h$, is selected based on a \emph{trainings set}, $\Xi$, of $m$ input vector examples. The process of selecting a function $h$, based on a \emph{trainings set} $\Xi$, is called \emph{training} a model or also \emph{fitting} a model.
 \\
 There are two major settings in machine learning. 
 \\
@@ -22,42 +22,138 @@ In supervised machine learning two main areas are distinguished, \emph{Regressio
 \\
 In Regression the hypothesis $h$ has a continuous output. Regression could, for instance, be used to approximate a function for a stock price and predict a future stock price as a numerical value on a continuous range of possible prices.
 \\
-Classification has a categorical output. Classification could, for instance, be used to classify emails to either spam or no spam. It also finds application in patter recognition. % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6? 
+In Classification the hypothesis $h$ has a categorical output. Classification could, for instance, be used to classify emails to either spam or no spam. It also finds application in patter recognition. % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6? 
 The case of an classification task that has a need to classify data into two distinguished classes is called \emph{binary classification}. The alternative case is \emph{multiclass classification}, which aims to classify data points into one of multiple different classes.
 
 %classification, inpu, representation, hypotesis, generalization:
 % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 21
 
 \section{Evaluation of Classifiers}
-Assessing the quality of a model is essential to choosing the right method or configuration of an algorithm. This is why in this chapter different metrics are introduced empirically  measure the quality of a \emph{binary classifier}.
- 
-\begin{itemize}
-\item{f-score}
-fscore , precision, recall
-% http://delivery.acm.org/10.1145/320000/312647/p42-yang.pdf?ip=134.155.178.109&id=312647&acc=ACTIVE%20SERVICE&key=2BA2C432AB83DA15%2E33B98ACB330D6FA0%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&CFID=976370719&CFTOKEN=43508633&__acm__=1503605339_b0f297be35db501d0410685c60e0b4b6
-(2 oben rechts)
-\item{Cross validation}
+Assessing the quality of a model is essential to choosing the right method or configuration of an algorithm. This is why in this section, different metrics are introduced to empirically  measure the quality of a \emph{binary classifiers}. Also a way of consistently checking for indicating metrics with an \emph{validation scheme} is shown.
+\\
+
+\subsection*{Evaluation metrics}
+In the following a binary classification task is regarded. The data set used has samples (data points) of the classes 1 and 0. A model $h(X)$ predicts a class label for for a given sample $X$. Assume the samples of the class 1 are relevant and the model is examined in regards to the class 1. 
+\\
+The \emph{positives}($pos$) are the set of all samples where the class label is 1. In contrast the emph{negatives} ($neg$) are the set of all samples where the class label is not 1 (in the binary setting 0).
+\\
+The model $h(X)$ also predicts some samples as positives and some as negatives. The prediction doesn't always coincide with the true class labels. The samples that the model identifies as positives and that are actually labelled as positives are called \emph{true positives} ($tp$). In contrast the samples that the model identifies as positives but that are labelled as negatives are called \emph{false positives} ($fp$).  Similarly the samples that the model identifies as negatives and that are actually labelled as negatives are called \emph{true negatives} ($tn$). Again, in contrast the samples that the model identifies as negatives but that are labelled as positives are called \emph{false negatives} ($fn$).
+\\
+
+One of the most basic metrics of a classifier are it's \emph{precision} and \emph{recall}.\\
+\emph{Precision} is defined as the ratio of true positives to all positives the model $h$ identified (true positives + false positives):
+\begin{equation} \label{eq:ev1}
+\text{Precision}=\frac{tp}{tp+fn}
+\end{equation}
+The precision can be interpreted as a measure of how good a model is at identifying only the positives as positive while avoiding to misclassify negatives as positives. 
+\\
+\emph{Recall} is defined as the ratio of true positives to all positives:
+\begin{equation} \label{eq:ev1}
+\text{Precision}=\frac{tp}{pos}
+\end{equation}
+The recall can be interpreted as a measure of how good a model is at identifying all the positives and missing as little positives as possible.
+\\
+
+Intuitively it can be seen that precision and recall have a inverse relationship to each other. For instance, the more samples are identified as positives by a model, the higher is the true positive rate, hence the recall. But the chance of identifying negatives as positives also rises such that the precision decreases.
+\\
+The goal of creating a model with any given method is to increase both, precision and recall, simultaneously. Nevertheless in some use cases it may be of advantage to value a good recall higher than a good precision and vice versa. This might be the case if it is very important to find all the positives, while not caring that much about false negatives ('false alarms'), when negatives are incorrectly identified as positives.
+\\
+
+A way to merge the two metrics in a joined metric, both for the case of equal and  unequal importance, is the \emph{f-score}, also called \emph{f\textsubscript{$\beta$}-score}.
+\\
+The f\textsubscript{$\beta$}-score takes into account both recall and precision and can be configured to weight one more important than the other. The f\textsubscript{$\beta$}-score is defined as follows:
+\begin{equation} \label{eq:ev2}
+f_\beta = (1+\beta^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(\beta^2 \cdot \text{precision}) + \text{recall}}
+\end{equation}
+In equation \ref{eq:ev2} the parameter $\beta$ is used to put more weight on precision or recall. If  $\beta>1$ if puts more weight on the recall,  if  $\beta<1$ more weight is put on the precision\\
+For instance a f\textsubscript{2}-score  would put more weight on the recall of a classifier:
+\begin{equation} \label{eq:ev3}
+f_\beta = (1+2^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(2^2 \cdot \text{precision}) + \text{recall}}
+\end{equation}	
+
+On the other side a f\textsubscript{0.5}-score  would put more weight on the precision of a classifier:
+\begin{equation} \label{eq:ev4}
+f_\beta = (1+0.5^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(0.5^2 \cdot \text{precision}) + \text{recall}}
+\end{equation}	
+
+In the case of equal importance, the f\textsubscript{1}-score is used, which is the \emph{harmonic mean} of precision and recall:
+\begin{equation} \label{eq:ev5}
+f_\beta = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}
+\end{equation}	
+\\
+
+A weighted or not weighted f\textsubscript{$\beta$}-score can be used to compare different approaches to a classification problem to each other.
+\subsection*{Validation scheme}
+
+To assess the recall, precision or other performance metrics of a model, the model has to be tested. Testing a model is done with data, that the model hasn't 'seen' yet, meaning data points that wasn't used in training the model. This is usually done by \emph{randomly} selecting a small fraction of all the available data and setting it aside as \emph{testing data}. This data is used to test a model and evaluate it's performance later on. The remaining data is used to train or fit the model. It is called \emph{training data}. \\
+Doing this random selection into training and testing data can lead to problems: Depending on the random split that is done, the testing data may, by chance, be very hard to classify in comparison to the training data. This would suggest a exaggerated bad performance of the classifier later on. On the other side, if the training data is easy to classify in comparison to the training data later evaluation would show a better performance than it might have in reality.\\
+To counteract this phenomenon \emph{cross-validation} is performed for testing. Cross-validation involves partitioning the available data into training and testing data multiple times, evaluation for a specific metric, and average the results. A cross-validation approach that is relevant for this paper is \emph{k-fold validation}.
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 26 (44)
+\\ 
 
-especially k-fold validation: 
-is non exhaustive
-
+K-fold validation is a non-exhaustive cross validation method, meaning it does not compute all the possible ways of spitting the available data into subsets. \\
+In k-fold validation the available data is split into $k$ equal sized, non-overlapping subsets of data points. In each validation step one of the subsets is seen as the testing data and the rest is combined to act as training data. A model is now trained on the training data and tested for different metrics, like recall and precision, on the testing data. This process is repeated $k$ times, each time leaving out one subset (\emph{fold}) of the available data as testing set. The metrics are then averaged.
+\\
 % http://ai.stanford.edu/people/nilsson/MLBOOK.pdf  82
 
-\end{itemize}
+Cross-validation averages many tests with different test and training data to achieve a consistent evaluation of a classifier with low variance between test.
+
 \section{Algorithms}
-\begin{itemize}
-\item{hyper-parameters}
-\item{loss function / regularization}
-\item{varance/over/underfitting}
-\item{linear/non linear}
-\item{may be oversimplyfied because of rahmen der arbeit}
-% http://jmlr.csail.mit.edu/papers/volume13/bergstra12a/bergstra12a.pdf 2
-\end{itemize}
+This section will introduce basic concepts and specific algorithms for the classification setting. The purpose of this section is to give a introduction into methods and tools used in this paper and give the reader a understanding of the underlying principles. Some topics may be oversimplified or not discussed in their whole complexity. The reason for this is, that it is beyond the scope of this theory section.
+\\
+
+Before getting into specific algorithms, a few basic concepts, relevant for most classification algorithms, are discussed.
+\\
+
+\textbf{Hyper-parameters}: \\
+\emph{Hyper-parameters} are parameters that configure a machine learning algorithm. Changing the hyper-parameters of an algorithm will change the way the algorithm constructs a model $h$. An example for this would be the maximal height of a decision tree in a decision tree model (see section 'Decision tree'). The task of finding good hyper-parameter for a algorithm is called \emph{hyper-parameter tuning} or \emph{hyper-parameter optimization}.
+
+\textbf{Model linearity}: \\
+A classification model classifies data points according to their feature vector. Visualized in a $n$-dimensional feature space, this means classification depends on the position of a data point in the feature space. The decision of a model to classify a region in feature space as one class or another can be represented by a \emph{decision boundary}. Data points laying on the one side of the decision boundary will be classified to one class while data points on the other side are classified to another class.
+\\
+This decision boundary of a model can have any form. If the form of the decision boundary is linear, meaning the decision boundary can be represented by a linear function in the form 
+\begin{equation} \label{eq:1}
+f(x)=\beta_0 + \beta_1 X_1 + ... + \beta_n X_n
+\end{equation}
+in a $n$-dimensional feature space, the model is \emph{linear}.\\
+If this isn't the case the model is \emph{non-linear}.
+\\
+
+\textbf{Bias-variance tradeoff}: \\
+Assume a model tries to approximate a function $f$.
+\\
+
+The \emph{bias error} of a model are errors, like misclassification, due to simplified assumptions made by a model. The bias of a model are these simplifying assumptions. 
+\\
+\emph{Low bias} of a model means less assumptions about a function $f$ are made. 
+\\
+\emph{High bias} of a model means more assumptions about a function $f$ are made. 
+\\
+
+The \emph{variance error} of a model are errors due to simplified assumptions made by a model. The bias of a model are these simplifying assumptions. 
+\\
+\emph{Low variance} of a model means changes in the training data, like added noise, will not have a big impact on the resulting model.
+\\
+\emph{High variance} of a model means changes in the training data, like added noise, will have a big impact on the resulting model.
+\\
+
+Bias and variance have a inverse relationship to each other.\\
+Low Bias and high variance leads to \emph{overfitting}. This means a model makes little assumptions about the form of $f$ and rather 'memorizes' the training data points. The model doesn't \emph{generalize} very well.
+\\
+High Bias and low variance leads to \emph{underfitting}. This means a model makes too many assumptions about the form of $f$ and misses a more subtle relationships in the data. The model doesn't \emph{gerneralize} the problem enough.
+\\
+
+\textbf{Loss function and regularization}: \\
+loss function / regularization
+\\
+
+
+In the following sections the basics of certain relevant classification algorithms will be explained.
+
 \subsection{Linear support vector classifier}
 In this chapter the support vector classifier will be introduced. The method was developed in the 1990’s and is often used as one of the best performing 'out of the box' classifiers. The goal of a linear support classifier is to find a function for a \emph{hyperplane} that splits the data points of two classes as best as possible. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
 A model based on a support vector classifier is linear.
-\subsubsection{Hyperplane classification}
+\subsubsection*{Hyperplane classification}
 The goal of the maximal margin classifier is to classify data by finding a hyperplane that optimally separates two classes in a dataset. Data points are either in class $y=f(x)=-1)$ or $y=f(x)=1)$. 
 \\
 A hyperplane is a flat affine subspace of dimension $p-1$, where p is the number of dimensions the hyperplane is in. In the case of a maximal margin classifier the number of dimensions which a hyperplane will be constructed in is the number dimension of the feature space. This stems from the intention to separate data points which have a feature vector of $p$ dimensions. Accordingly a hyperplane is defined by
@@ -82,7 +178,7 @@ If a hyperplane is defined in a way that the data points of on class lay on the 
 The \emph{magnitude} of $h(X)$ can be used to derive a confidence score for the classification. A higher magnitude of $h(X)$, which can be interpreted as distance to the plane, corresponds to a higher confidence in the classification.
 
 
-\subsubsection{Maximal margin classifier}
+\subsubsection*{Maximal margin classifier}
 
 If a class separating hyperplane exist there exists an infinite number of such hyperplanes separating the classes (a hyperplane can always be moved or varied slightly while still remaining class separating). The question arises which hyperplane should be used. 
 \\
@@ -104,7 +200,7 @@ $y_i$ is the true class of the $i$th data point. If all data points are classifi
 
 The maximal margin classifier has some faults that have to be considered. Because the data points are of a class are strictly separated by a hyperplane of a linear form from the other class, it is not possible to find a hyperplane if the classes are not linear separable.  Furthermore even when the classes are linear separable the hyperplane pound might be forced in a unfavourable spot by only one single data point that doesn't represent most of the other data points of the same class. The extension to a support vector classifier solves those problems.
 
-\subsubsection{Support vector classifier}
+\subsubsection*{Support vector classifier}
 
 To solve the above mentioned faults the \emph{support vector classifier}, also called \emph{soft margin classifier}, allows some data points of the training data to be not on the correct side of the margin or the hyperplane. 
 \\
@@ -199,10 +295,13 @@ $C$ is the number of unique labels and f\textsubscript{i} is the frequency of la
 To reach the highest 'purity', either one of the metrics has to be minimized. \\
 Finding the optimal split requires finding $a$ and $c$ such that the splitting rule  $a \leq c$ minimizes the sum of the impurity measures for both forming feature subspaces. The impurity measures commonly used are Ginni impurity (equation \ref{eq:13}) and Entropy (equation \ref{eq:13}). 
 \\
-The iterative splitting or growing of the tree is stopped when either a certain height of the tree is reached, a minimal number of trainings data points in one node is surpassed or the purity of a subspace can't be significantly improved by another split.
+The iterative splitting or growing of the tree is stopped when either a certain height of the tree is reached, a minimal number of trainings data points in one terminal node is undercut or the purity of a subspace can't be significantly improved by another split.
 \\
 
-Now that a decision tree is constructed every terminal node is assigned a class prediction. The class prediction of a terminal node is simply the most common class of the data points in the feature subspace that the terminal node represents.
+Now that a decision tree is constructed every terminal node is assigned a class prediction. The class prediction of a terminal node is simply the most common class of the data points in the feature subspace that the terminal node represents. For later ensemble methods based on a decision tree it is important to note, that a terminal node $t$ can not only predict but also give the probability $p(C_i|X)$ of a class $C_i$:
+\begin{equation} \label{eq:20}
+p_t(C_i|X)=\frac{\text{number of data labeles as class }C_i\text{ in terminal node }t}{\text{total number of data points in termin node }t}
+\end{equation}
 \\
 
 A decision tree model can classify any new data point by passing it from the root of the decision tree to a terminal node, which holds the class prediction, by simply following the decision rules either to the right to the left child node (depending on how the tree is implemented) if the decision rule ( as seen in equation \ref{eq12}) holds and to the other side if it doesn't.\\
@@ -229,14 +328,29 @@ The method reduces variance and minders the risk of overfitting. Another method 
 \subsection{Boosted trees}
 
 In this chapter Boosted trees will be introduced. The method also utilizes decision trees and tackles the problem of the high variance of a single decision tree. 
-...
-A model based on a random forest is non-linear.
+Similar to a random forest, boosted trees use a ensemble of decision trees. Boosting involves constructing multiple decision trees successively with every new decision tree encouraged to counteract the shortcomings of the previous constructed trees. This is done by fitting each decision tree on a modified version of the training set of the previous decision tree.
+A model based on boosted trees is non-linear.
+\\
 
-bagging
-Boosting works in a similar way, except that the trees are grown sequentially
-grown using information from previously grown trees. Boosting does not involve bootstrap sampling; instead each tree is fit on a modified version of the original data set.
-learns slowly. Given the current model, we fit a decision tree to the residuals from the model
+The way a boosted tree model is created decision trees are added one at a time.
+\\
+In the beginning a decision tree is fitted to the entire training data. No bagging or other sampling method is performed here. 
+\\
+To enhance the existing tree or tree ensemble it firstly has to be assessed where the weaknesses of the previous decision tree or tree ensemble are. This is done by calculating the \emph{residuals} for every data point. The residual of a data point is the differences of it's prediction to it's real label. The residual $r_i$ for all $i$ in the trainings set can be calculated as follows:
+ \begin{equation} \label{eq:20}
+r_i=y_i-h(X_i)
+\end{equation}
+Here $y_i$ is the true label of the data point $X_i$ and $h(X_i)$ is the prediction of the model. Note that this prediction$h(X_i)$ is the probability of the class $C_i$, as mentioned in the section 'Decision tree'. The residuals that emerge from this process for every data point can be seen as a \emph{weight} for all data points. The higher the residual of a data point, the worse the tree or ensemble of trees was at classifying it correctly. That means the model is weak at data points with high residual. In the next step more attention should be given to data points with high residual, to counteract these weak points.
+\\
+The next tree will not be fitted to the the initial labels $y_i$ of the training set, but to the residuals of the previous tree. This gives the data points a weight. Data points with higher weight are more relevant to construction of the decision tree. This makes sense because a heigh residual means a weak performance of the previouse decision tree or ensemble. This means for the following constructed decision tree $y_i$ will be set to $r_i$ ($y_i=r_i$).
+\\
+Each created tree is added to the tree ensemble and the process is repeated until a stopping criterion is reached, like the maximal number of trees in the ensemble or a minimum threshold of enhancement in performance is undercut in one iteration.
+ %http://stattrek.com/statistics/dictionary.aspx?definition=residual
+\\
+Side note: In a gradient boosted tree algorithm, the weights are not only getting updated by the residuals, but a gradient descent procedure is used to minimize a loss function when adding trees. The details of this will not be discussed for the reason of being beyond the scope of the theory section of giving a introduction to various methods.
+\\
 
+To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point. The method reduces variance and minders the risk of overfitting similar to the previous tree ensemble method.
 
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
 \subsection{Naive Bayes}
@@ -299,4 +413,4 @@ A data point is predicted as a class $C_a \ in [C_1,...,C_k$ if and only if $C_a
 
 %http://rizalespe.lecture.ub.ac.id/files/2015/10/DM-04-1-Klasifikasi.pdf
 % http://researchweb.watson.ibm.com/people/r/rish/papers/RC22230.pdf (IBM ressource)
-info PDF in quellen
+%info PDF in quellen
