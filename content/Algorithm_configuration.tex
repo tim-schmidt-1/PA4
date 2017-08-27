@@ -1,6 +1,7 @@
 \chapter{Algorithm configuration}
 \label{ch:Algorithm configuration}
-Many of the methods proposed in chapter \ref{ch:Analysis of the pattern recognition problem} require \emph{hyper-parameters}.  A hyper-parameter is a setting parameter that varies aspects of the algorithm and might lead to better or worse results.To ensure that all the algorithms are comparable with each other this chapter goes over the process of finding the optimal hyper-parameters for every approach. In the process a f\textsubscript{2}-score is assigned to every algorithm under the condition of optimal hyper-parameters.
+Many of the methods proposed in chapter \ref{ch:Analysis of the pattern recognition problem} require \emph{hyper-parameters}.  A hyper-parameter is a setting parameter that varies aspects of the algorithm and might lead to better or worse results.To ensure that all the algorithms are comparable with each other this chapter goes through the process of finding the optimal hyper-parameters for every approach. In the process a f\textsubscript{2}-score is assigned to every algorithm under the condition of optimal hyper-parameters.
+[]
 \section*{Hyper-parameter tuning}
 The process of searching and finding good hyper-parameters for a given algorithm is called \emph{hyper-parameter tuning}. Searching for good hyper parameters takes the following aspects to be considered:
 \begin{itemize}
@@ -24,17 +25,9 @@ After this process is done the hyper-parameters that resulted in the highest f\t
 In the following for each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
 
 \subsection*{Linear SVM}
-The tunable hyper-parameters for the the linear SVM classifier is the regularization. \\
-\textbf{L1 regularization:}\\
-$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
- L1 regularization is a loss function that minimizes the sum of the absolute differences of target and estimated value.
-\\
-\textbf{L2 regularization:}  \\
-$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for  y\textsubscript{i}.\\
- L2 regularization is a loss function that minimizes the square of the absolute differences of target and estimated value.
-\\
+The tunable hyper-parameters for the the linear SVM classifier is the regularization.  The possible regularizations are:\\
+\textbf{L1 regularization} \\
+\textbf{L2 regularization}  \\
 
 The hyper-parameter search reveals the following results for the two regularization approaches: \\
 
@@ -68,18 +61,10 @@ The best performing SVM model reaches a maximal {f\textsubscript{2}-score of \te
 Regularization: \qquad  \qquad \textbf{l1 regularization}
 
 \subsection*{Logistic regression}
-The tunable hyper-parameters for the the logistic regression classifier is the regularization. 
+The tunable hyper-parameters for the the logistic regression classifier is the regularization. The possible regularizations are:
 \\
-\textbf{L1 regularization:}\\
-$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
- L1 regularization is a loss function that minimizes the sum of the absolute differences of target and estimated value.
-\\
-\textbf{L2 regularization:}  \\
-$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
- L2 regularization is a loss function that minimizes the square of the absolute differences of target and estimated value.
-\\
+\textbf{L1 regularization}\\
+\textbf{L2 regularization}  \\
 
 The hyper-parameter search reveals the following results for the two regularization approaches: \\
 
@@ -116,7 +101,7 @@ The tunable hyper-parameters for the decision tree algorithm are:
 \begin{itemize}
 \item{\textbf{Impurity}}\\
 The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
-Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation).\\
+Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation).  The possible impurity measures are:\\
 \textbf{Gini impurity} \\
 \textbf{Entropy}
 \item{\textbf{Maximal depth}}\\
@@ -215,7 +200,7 @@ Maximal depth: \qquad \textbf{2}
 The tunable hyper-parameters for the decision tree algorithm are:
 \begin{itemize}
 \item{\textbf{Loss function}}\\
-The loss function is used for minimization during gradient boosting. The loss function provided are: \\
+The loss function provided are: \\
 \textbf{LogLoss}\\
 \textbf{Least Squares Error}\\
 \textbf{Least Absolute Error}\\

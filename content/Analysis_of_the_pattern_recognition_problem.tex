@@ -56,9 +56,9 @@ The distribution of the data points labeled as collision or no collision can be 
 \section{Solution strategy}
 \label{sec:Solution strategy}
 Combining the knowledge about the sensor data from the previous section and the objective as described in chapter \ref{ch:Introduction}, this chapter will narrow down on a specific problem type and solution strategy. In the process, the limitations described in Chapter \ref{ch:Introduction} have to be considered. \\
-A corpus of sensor data was collected as described above and labelled according to the event of a collision or no collision. In chapter \ref{ch:Introduction}  the necessity of using the Apache Spark library module 'MLLib' is constituted.
+A corpus of sensor data was collected as described above and labelled according to the event of a collision or no collision. In chapter \ref{ch:Introduction}  the necessity of using the Apache Spark library module ``MLLib'' is constituted.
 \\ 
-Having a set of labeled sensor data allows for a supervised machine learning approach.  Furthermore the existence of concrete data points which represent the state of the Sensorboard at a given time makes it possible to base the recognition of collisions soly on sinlge data points. The recognition of collisions can then in turn be formulated as the problem of deciding weather a given data point corresponds to a collision or no collision. A problem of this kind can be solved by binary classification. \\
+Having a set of labeled sensor data allows for a supervised machine learning approach.  Furthermore the existence of concrete data points which represent the state of the Sensorboard at a given time makes it possible to base the recognition of collisions solely on single data points. The recognition of collisions can then in turn be formulated as the problem of deciding weather a given data point corresponds to a collision or no collision. A problem of this kind can be solved by binary classification. \\
 Having specified the solution method to a binary classification approach, specific algorithms can be considered. For the specific task of supervised binary classification the following algorithms are supported by the MLLib module:
 
 \begin{itemize}

@@ -1,7 +1,7 @@
 \chapter{Evalutation}
 \label{ch:Evalutation}
 The optimal configuration for the different algorithms has been worked out in chapter \ref{ch:Algorithm configuration}. Now this chapter is devoted to comparing and deciding on an optimal algorithm for the problem of collision detection.\\
-To be able to compare the algorithms they are each used to train a model with the hyper-parameters found in chapter \ref{ch:Analysis of the pattern recognition problem}. The models are evaluated with a k-fold validation, with k=10. The results can be seen in figure \ref{fig:ranking}.
+To be able to compare the algorithms they are each used to train a model with the hyper-parameters found in chapter \ref{ch:Analysis of the pattern recognition problem}. The models are evaluated with a k-fold validation, with k=10. The results can be seen in figure \ref{fig:ranking}. 
 
 
 \begin{figure}[h]
@@ -13,7 +13,7 @@ enlarge y limits=0.5,
 %xlabel={f\textsubscript{2}-score},
 width=12cm, height=15cm, enlarge y limits=0.1,
 symbolic y coords={
-Naiv bayes,
+%Naiv bayes,
 Logistic regression,
 Linear SVM,
 Decision Tree,
@@ -30,7 +30,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 (0.95,Logistic regression)
 (0.96,Decision Tree)
 (0.98,Gradient-boosted trees)
-(0.34,Naiv bayes)
+%(0.34,Naiv bayes)
 };
 \addplot coordinates {
 (0.94,Random forest)
@@ -38,7 +38,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 (0.82,Logistic regression)
 (0.92,Decision Tree)
 (0.96,Gradient-boosted trees)
-( 1.00,Naiv bayes)
+%( 1.00,Naiv bayes)
 };
 \addplot coordinates {
 (0.99,Random forest)
@@ -46,7 +46,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 (0.93,Logistic regression)
 (0.94,Decision Tree)
 (0.97,Gradient-boosted trees)
-(0.39,Naiv bayes)
+%(0.39,Naiv bayes)
 };
 
 \legend{Recall, Precision, f\textsubscript{2}-score}
@@ -56,6 +56,8 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 \caption{Ranking of classification algorithms}
 \label{fig:ranking}
 \end{figure}
+The naiv bayes method is not included in figure \ref{fig:ranking} for better depiction and comparison of the other methods. The best performing naiv bayes model ranks below all the other classifiers with an  f\textsubscript{2}-score of 0.34. 
+\\
 
 According to the  f\textsubscript{2}-score the best performing method is a random forest classifier with 4 equally well performing hyper-parameter configurations:\\
 
