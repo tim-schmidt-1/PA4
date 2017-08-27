@@ -116,13 +116,9 @@ The tunable hyper-parameters for the decision tree algorithm are:
 \begin{itemize}
 \item{\textbf{Impurity}}\\
 The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
-Two impurity measures for classification are provided:\\
-\textbf{Gini impurity:}  \\
-$\sum_{i=1}^{C} f\textsubscript{i}(1-f\textsubscript{i}) $ \\
-C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
-\textbf{Entropy:}\\
-$\frac{1}{N}\sum_{i=1}^{C} -f\textsubscript{i}\log(f\textsubscript{i}) $ \\
-C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
+Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation):\\
+\textbf{Gini impurity} \\
+\textbf{Entropy:}
 \item{\textbf{Maximal depth}}\\
 The maximal depth determines a limit of growth for a decision tree. This consequentially limits the number of nodes or decisions that are possible. It represents a stopping criteria. \\
 The parameter space for the maximal depth is chosen \textbf{from 1 to 10} (inclusive). 
@@ -172,13 +168,9 @@ The parameter space for the number of threes is chosen \textbf{from 2 to 10} (in
 
 \item{\textbf{Impurity}}\\
 The impurity measure is used to decide on a splitting rule for each node in the decision tree building process.
-Two impurity measures for classification are provided:\\
-\textbf{Gini impurity:}  \\
-$\sum_{i=1}^{C} f\textsubscript{i}(1-f\textsubscript{i}) $ \\
-C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
-\textbf{Entropy:}\\
-$\frac{1}{N}\sum_{i=1}^{C} -f\textsubscript{i}\log(f\textsubscript{i}) $ \\
-C is the number of unique labels and f\textsubscript{i} is the frequency of label i in a node. \\
+Two impurity measures for classification are provided (see chapter \ref{ch:Theory} for more detailed explanation):\\
+\textbf{Gini impurity}  \\
+\textbf{Entropy}
 \item{\textbf{Maximal depth}}\\
 The maximal depth determines a limit of growth for a decision tree. This consequentially limits the number of nodes or decisions that are possible. It represents a stopping criteria. \\
 The parameter space for the maximal depth is chosen \textbf{from 1 to 10} (inclusive). 

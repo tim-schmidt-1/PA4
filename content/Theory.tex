@@ -29,6 +29,8 @@ The case of an classification task that has a need to classify data into two dis
 % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 21
 
 \section{Evaluation of Classifiers}
+Assessing the quality of a model is essential to choosing the right method or configuration of an algorithm. This is why in this chapter different metrics are introduced empirically  measure the quality of a \emph{binary classifier}.
+ 
 \begin{itemize}
 \item{f-score}
 fscore , precision, recall
@@ -238,60 +240,62 @@ learns slowly. Given the current model, we fit a decision tree to the residuals 
 
 % https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
 \subsection{Naive Bayes}
-In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point.
+In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point. The goal of a naiv bayes classification is predicting a class by finding the highest of the probability of the probabilities of a given data point belonging to a class. The method primarily used in text classification.
 A model based on naiv bayes is non-linear.
+\\
+The method is explained in the general setting for multiclass classification.
+\\
+In the following we will regard data points $A$ with $n$ features $A_1$ to $A_n$. A concrete $X \in A$ with the features $x_1$ to $x_n$ where $n$ is the number of features of $X$, hence the length of the feature vector of $X$, is used. The $i$th class is denoted as $C_i$.\\
+The task of finding the probability of an given data point $X$ belonging to a specific class $C_i$ can be expressed as maximising the following expression for every $C_I$ :
+\begin{equation} \label{eq:nb1}
+ p(C_i|X)
+\end{equation}
+The equation \ref{eq:nb1} is the a posteriori probability of $C_i$ conditioned on $X$.
+\\
+The initial goal of maximising $p(C_i|X)$ can be rewrote using \emph{Baye's theorem}:
+\begin{equation} \label{eq:nb2}
+p(C_i|X)=\frac{p(X|C_i) P(C_i)}{P(X)}
+\end{equation}
+%An Essay Towards Solving a Problem in the Doctrine of Chances, Thomas Bayes
+$p(X)$ is the a priori probability of $X$. $p(C_i)$ is the a priori probability of $C_i$.
+\\
+The a priori probability of $X$ does not change when comparing probablities of $C_i$ conditioned on $X$. Therefore the factor can be dismissed in this comparison. This way the task is to maximise only the following term:
+\begin{equation} \label{eq:nb3}
+p(X|C_i) p(C_i)
+\end{equation}
+The a priori probability of $C_i$  $p(C_i)$ is also known. It can be approximated from the ratio of data points labelled as class $C_i$ in the training data:
+\begin{equation} \label{eq:nb4}
+p(C_i)=\frac{\text{number of data points labelled as}C_i}{\text{number of total data points}}
+\end{equation}
+This means this term doesn't has to be calculated again.
+\\
+Still the term
+\begin{equation} \label{eq:nb5}
+p(X|C_i)
+\end{equation}
+remains. Since $X$ can consist of many features and represents a big feature vector it is computational expensive to calculate $p(X|C_i)$. To simplify the computation involved a assumption is made that, in a sense, may be considered 'naive'.
+\\
+The assumption made is \emph{class conditional independence}. This means the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point. Mathematically that assumption allows the following:
+\begin{equation} \label{eq:nb6}
+p(X|C_i) \approx prod_{k=1}^{n} p(x_k|C_i)
+\end{equation}
+The probabilities $p(x_1|C_i), ... ,p(x_n|C_i)$ can be more easily calculated from the training data:
+For $A_k$ being continuous-valued the values are assumed to have a Gaussian distribution with a mean $\mu$ and standard deviation $\sigma$ defined by
 
- (class conditional independence) simplify the computation involved and, in this sense, is considered ”naive”.
-Baye's Theorem:
-Our Problem:  p(H|X)
-H hypotesis, X obersavtion
-(post priori)
-P(H) is the a priori probability of H.
-
-Baye's Theorem:
-\begin{equation} \label{eq:4}
-p(H|X)=\frac{p(X|H} P(H)}{P(X)}
+\begin{equation} \label{eq:nb7}
+p(x,\mu ,\sigma) = \frac{1}{\sqrt{2\pi \sigma}}e^{-\frac{(x-\mu )^2}{2\sigma ^2}}
 \end{equation}
 
-H is all C_i
+so that for $p(X|C_i)$ holds:
 
-search C_i with highest p(C_i|X) for all i
-
-maximise:
-p(C_i|X)=\frac{p(X|C_i} P(C_i)}{P(X)}
-P(X) is allways the same
-maximise:
-p(X|C_i} P(C_i)
-
-
-P(C_i) is known because of the proption of pos and neg samples in dataset
-maximise:
-P(X|C_i)
-
-because X has many features it is to expensive to compute all possible  P(X|C_i)
-
-naiv assumption: class conditional independence
-X_1..p is indipendent from X_1..p
-
-This means:
-\begin{equation} \label{eq:4}
-p(X|X_i) \approx prod_{k=1}^{p}p(x_k|C_i)
+\begin{equation} \label{eq:nb8}
+p(X|C_i) = p(x,\mu ,\sigma)
 \end{equation}
 
-If Ak is continuous-valued, then we typically assume that
-the values have a Gaussian distribution with a mean μ and
-standard deviation
+This way the mean $\mu_Ci$ and the standard derivation $\sigma_Ci$ of values for features $A_k$ for training samples of class $C_i$ need to be calculated.
+\\
 
-calculate the mean and standart derivation of Attribute (X_l element) A_k.
-
-xk|Ci) = g(xk, μCi , Ci ).
-We need to compute μCi and Ci , which are the mean and
-standard deviation of values of attribute Ak for training
-samples of class Ci
-
-prediction:
-class that maximizes P(X|C_i)P(C_i) for each C_iwins
-
+A data point is predicted as a class $C_a \ in [C_1,...,C_k$ if and only if $C_a$ maximes $(X|C_i) p(C_i)$  for all classes.  
 
 %http://rizalespe.lecture.ub.ac.id/files/2015/10/DM-04-1-Klasifikasi.pdf
 % http://researchweb.watson.ibm.com/people/r/rish/papers/RC22230.pdf (IBM ressource)
