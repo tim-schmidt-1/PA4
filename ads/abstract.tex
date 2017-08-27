@@ -2,14 +2,13 @@
 
 \pagestyle{empty}
 
-\iflang{de}{%
+\iflang{en}{%
 % Dieser deutsche Teil wird nur angezeigt, wenn die Sprache auf Deutsch eingestellt ist.
 \renewcommand{\abstractname}{\langabstract} % Text für Überschrift
 
 \begin{otherlanguage}{english} % auskommentieren, wenn Abstract auf Deutsch sein soll
 \begin{abstract}
-
-
+This paper deals with the application of machine learning approaches on IoT sensor data for a specific showcase scenario. The feasibility of machine learning algorithms for detecting collisions on a skateboard, on the basis acceleration data, is explored. Machine learning methods, restricted to algorithms provided by the Apache Spark function library ``MLlib'', are configured and their performance is compared using a f\textsubscript{2}-score to answer the question of an optimal method. The resulting, best performing, model utilizes a random forest method. A naiv bayes method yields the worst performance.
 \end{abstract}
 \end{otherlanguage} % auskommentieren, wenn Abstract auf Deutsch sein soll
 }

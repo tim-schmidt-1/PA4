@@ -15,7 +15,7 @@ width=12cm, height=15cm, enlarge y limits=0.1,
 symbolic y coords={
 %Naiv bayes,
 Logistic regression,
-Linear SVM,
+Linear SVC,
 Decision Tree,
 Gradient-boosted trees,
 Random forest
@@ -26,7 +26,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 
 \addplot coordinates {
 (1.00,Random forest)
-(0.98,Linear SVM)
+(0.98,Linear SVC)
 (0.95,Logistic regression)
 (0.96,Decision Tree)
 (0.98,Gradient-boosted trees)
@@ -34,7 +34,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 };
 \addplot coordinates {
 (0.94,Random forest)
-(0.77,Linear SVM)
+(0.77,Linear SVC)
 (0.82,Logistic regression)
 (0.92,Decision Tree)
 (0.96,Gradient-boosted trees)
@@ -42,7 +42,7 @@ legend style={at={(axis cs:1.05,Random forest)},anchor=north west}
 };
 \addplot coordinates {
 (0.99,Random forest)
-(0.93,Linear SVM)
+(0.93,Linear SVC)
 (0.93,Logistic regression)
 (0.94,Decision Tree)
 (0.97,Gradient-boosted trees)
@@ -83,6 +83,6 @@ The best performing random forest model reaches a maximal {f\textsubscript{2}-sc
 \\
 This means a collisions that occur will be classified correctly classified as a collision 100\% of the time on the collected data and will be falsely classified as a collision 6\% of the time when no actual collision happened.
 \\
-This results indicate that the machine learning approach to recognizing collisions on a physical board is eligible and can perform well. Still it has to be considered that these results are achieved on data which is generated in experience soly for that reason and results may differ when applied in real world situations.
+This results indicate that the machine learning approach to recognizing collisions on a physical board is eligible and can perform well. Still it has to be considered that these results are achieved on data which is generated in experiment  solely for that reason and results may differ when applied in real world situations.
 \\
-In figure \ref{fig:ranking} the ranking of the classification methods shows that decision tree based approaches have a advantage over the remaining algorithms. Random forest and gradient-boosted tree models as decision tree assembles performed on average better than a single decision tree. The naiv base algorithm performs worst under the possible algorithms. 
+In figure \ref{fig:ranking} the ranking of the classification methods shows that decision tree based approaches have a advantage over the remaining algorithms. Random forest and gradient-boosted tree models as decision tree assembles performed on average better than a single decision tree. The naive base algorithm performs worst under the possible algorithms. 

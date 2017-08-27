@@ -1,0 +1,329 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global}
+    \entry{kfold}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=c348e11a9e7f34b17b0811660fa01649}{%
+           family={Blum},
+           family_i={B\bibinitperiod},
+           given={Avrim},
+           given_i={A\bibinitperiod}}}%
+        {{hash=8e941bf5de8ef9916e85742c9f469bc9}{%
+           family={Kalai},
+           family_i={K\bibinitperiod},
+           given={Adam},
+           given_i={A\bibinitperiod}}}%
+        {{hash=3b32f20ce03981cb315259a6fd0a3068}{%
+           family={Langford},
+           family_i={L\bibinitperiod},
+           given={John},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Santa Cruz, California, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{040e5cbba82a4f7fd78e94cec1650968}
+      \strng{fullhash}{040e5cbba82a4f7fd78e94cec1650968}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Twelfth Annual Conference on Computational Learning Theory}
+      \field{isbn}{1-58113-167-4}
+      \field{series}{COLT '99}
+      \field{title}{Beating the Hold-out: Bounds for K-fold and Progressive Cross-validation}
+      \field{year}{1999}
+      \field{pages}{203\bibrangedash 208}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/307400.307439
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/307400.307439
+      \endverb
+    \endentry
+    \entry{Breiman.post2005cop.1984}{book}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           family_i={B\bibinitperiod},
+           given={Leo},
+           given_i={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton}%
+      }
+      \list{publisher}{1}{%
+        {Chapman {\&} Hall/CRC}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-412-04841-8}
+      \field{title}{Classification and regression trees}
+      \field{year}{post 2005], cop. 1984}
+    \endentry
+    \entry{evalmetrics2}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=e56fa710f7fca60cc66c629005e9255b}{%
+           family={Goutte},
+           family_i={G\bibinitperiod},
+           given={Cyril},
+           given_i={C\bibinitperiod}}}%
+        {{hash=410910ecb38a1335705bfa19ee963469}{%
+           family={Gaussier},
+           family_i={G\bibinitperiod},
+           given={Eric},
+           given_i={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Santiago de Compostela, Spain}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{c06d830d41c59e55c1a8505cf136508a}
+      \strng{fullhash}{c06d830d41c59e55c1a8505cf136508a}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 27th European Conference on Advances in Information Retrieval Research}
+      \field{isbn}{3-540-25295-9, 978-3-540-25295-5}
+      \field{series}{ECIR'05}
+      \field{title}{A Probabilistic Interpretation of Precision, Recall and F-score, with Implication for Evaluation}
+      \field{year}{2005}
+      \field{pages}{345\bibrangedash 359}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/978-3-540-31865-1_25
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1007/978-3-540-31865-1_25
+      \endverb
+    \endentry
+    \entry{techdocu}{misc}{}
+      \name{editor}{1}{}{%
+        {{hash=2243586a00190bd0afd96d2985dc4dd5}{%
+           family={Instrument's},
+           family_i={I\bibinitperiod},
+           given={Texas},
+           given_i={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{2243586a00190bd0afd96d2985dc4dd5}
+      \strng{fullhash}{2243586a00190bd0afd96d2985dc4dd5}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{title}{Multi-Standard CC2650 SensorTag Design Guide}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://www.ti.com/lit/ug/tidu862/tidu862.pdf
+      \endverb
+    \endentry
+    \entry{James.2013}{article}{}
+      \name{author}{4}{}{%
+        {{hash=df184c5fa522ac8a515ec4de13aef234}{%
+           family={James},
+           family_i={J\bibinitperiod},
+           given={Gareth},
+           given_i={G\bibinitperiod}}}%
+        {{hash=1ab16961e0de50711fa6bd9425f9b4a6}{%
+           family={Witten},
+           family_i={W\bibinitperiod},
+           given={Daniela},
+           given_i={D\bibinitperiod}}}%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           family_i={H\bibinitperiod},
+           given={Trevor},
+           given_i={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           family_i={T\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{fullhash}{da61646157a6be769f34984f5cb603b0}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An introduction to statistical learning}
+      \field{volume}{112}
+      \field{year}{2013}
+    \endentry
+    \entry{gridsearch}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9c73136eabe9fc04ce7bf969c01064bc}{%
+           family={Lerman},
+           family_i={L\bibinitperiod},
+           given={P.\bibnamedelimi M.},
+           given_i={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {[Wiley, Royal Statistical Society]}%
+      }
+      \strng{namehash}{9c73136eabe9fc04ce7bf969c01064bc}
+      \strng{fullhash}{9c73136eabe9fc04ce7bf969c01064bc}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A grid-search method of fitting segmented regression curves with unknown transition points is described and compared with a standard method. It is shown to be suitable for fitting a wider class of models than the standard method and to provide as a by-product a way of making reliable inferences about the abscissae of the transitions.}
+      \field{issn}{00359254, 14679876}
+      \field{journaltitle}{Journal of the Royal Statistical Society. Series C (Applied Statistics)}
+      \field{number}{1}
+      \field{title}{Fitting Segmented Regression Models by Grid Search}
+      \field{volume}{29}
+      \field{year}{1980}
+      \field{pages}{77\bibrangedash 84}
+      \range{pages}{8}
+      \verb{url}
+      \verb http://www.jstor.org/stable/2346413
+      \endverb
+    \endentry
+    \entry{Marr.2016}{misc}{}
+      \name{editor}{1}{}{%
+        {{hash=7fde2598ed07ab55f77c01eaf7411dc5}{%
+           family={Marr},
+           family_i={M\bibinitperiod},
+           given={Bernard},
+           given_i={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{7fde2598ed07ab55f77c01eaf7411dc5}
+      \strng{fullhash}{7fde2598ed07ab55f77c01eaf7411dc5}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{title}{A Short History of Machine Learning}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://www.forbes.com/sites/bernardmarr/2016/02/19/a-short-history-of-machine-learning-every-manager-should-read/%5C#2df484f415e7
+      \endverb
+    \endentry
+    \entry{evalmetrics}{article}{}
+      \name{author}{3}{}{%
+        {{hash=220f632d34cfba57880f932678144697}{%
+           family={Rodriguez},
+           family_i={R\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           given_i={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=b878c0f7593fd7f0aeedc4ea2b615026}{%
+           family={Perez},
+           family_i={P\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=0f7f9a95b661c193dfe877875fa20fee}{%
+           family={Lozano},
+           family_i={L\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2985c1b2819ac13547b03fdb3d8bdaf}
+      \strng{fullhash}{c2985c1b2819ac13547b03fdb3d8bdaf}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-8828}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{month}{03}
+      \field{number}{3}
+      \field{title}{Sensitivity Analysis of k-Fold Cross Validation in Prediction Error Estimation}
+      \field{volume}{32}
+      \field{year}{2010}
+      \field{pages}{569\bibrangedash 575}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/TPAMI.2009.187
+      \endverb
+      \keyw{Bayes methods;estimation theory;learning (artificial intelligence);pattern classification;probability;statistical analysis;classification error estimator;k-fold cross-validation;machine learning;naive Bayes method;nearest neighbor algorithm;prediction error estimation;probability distribution;sensitivity analysis;statistical properties;bias and variance;decomposition of the variance;error estimation;k-fold cross validation;prediction error;sources of sensitivity;supervised classification.}
+    \endentry
+    \entry{RonKohavi.1995}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d185927d18155dda9f7d6f0812310a4a}{%
+           family={{Ron\bibnamedelimb Kohavi}},
+           family_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d185927d18155dda9f7d6f0812310a4a}
+      \strng{fullhash}{d185927d18155dda9f7d6f0812310a4a}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A study of~Cross-Validation and Bootstrp for Accuracy Estimation and Model Selection}
+      \field{year}{1995}
+      \verb{url}
+      \verb %5Curl%7Bhttps://pdfs.semanticscholar.org/0be0/d781305750b37acb35fa187febd8db67bfcc.pdf%7D
+      \endverb
+      \warn{\item Datamodel: Entry 'RonKohavi.1995' (bibliography.bib): Invalid format '08/20/2017' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{Seni.2010}{book}{}
+      \name{author}{2}{}{%
+        {{hash=c4ee0b07e8c6ff6b87d42e733be6e486}{%
+           family={Seni},
+           family_i={S\bibinitperiod},
+           given={Giovanni},
+           given_i={G\bibinitperiod}}}%
+        {{hash=4f17663dc990fd7cc6318446ad23f343}{%
+           family={Elder},
+           family_i={E\bibinitperiod},
+           given={John},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {United States}%
+      }
+      \list{publisher}{1}{%
+        {Morgan {\&} Claypool}%
+      }
+      \strng{namehash}{977904323304a27f87eefa47d4d8e305}
+      \strng{fullhash}{977904323304a27f87eefa47d4d8e305}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781608452842}
+      \field{series}{Synthesis lectures on data mining and knowledge discovery, 2151-0067}
+      \field{title}{Ensemble methods in data mining: Improving accuracy through combining predictions / Giovanni Seni, John Elder}
+      \field{year}{2010}
+    \endentry
+  \endsortlist
+  \missing{james2013introduction}
+  \missing{rish2001empirical}
+  \missing{cox1958regression}
+  \missing{friedman2000additive}
+  \missing{Burges1998}
+  \missing{russell1995modern}
+  \missing{Breiman2001}
+\endrefsection
+\endinput
+

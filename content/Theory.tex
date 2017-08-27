@@ -1,7 +1,7 @@
 \chapter{Theory}
 \label{ch:Theory}
 \section{Machine Learning}
-Historically computers had to be programmed on a specific task using domain knowledge of humans. Machine learning challenges this traditional way of programming. Rather than trough extensive domain knowledge, machine learning algorithms are used to autonomously learn from data and information. []
+Historically computers had to be programmed on a specific task using domain knowledge of humans. Machine learning challenges this traditional way of programming. Rather than trough extensive domain knowledge, machine learning algorithms are used to autonomously learn from data and information. \autocite{Marr.2016}
 \\
 %https://www.forbes.com/sites/bernardmarr/2016/02/19/a-short-history-of-machine-learning-every-manager-should-read/#77bf286315e7
 
@@ -22,11 +22,10 @@ The second setting is  \emph{supervised learning}, in which the values of $f$ ar
 \\
 In supervised machine learning two main areas are distinguished, \emph{regression} and \emph{classification}. 
 \\
-For regression the hypothesis $h$ has a continuous output. Regression could, for instance, be used to approximate a function for a stock price and predict a future stock price as a numerical value on a continuous range of possible prices.
-\\
-For classification the hypothesis $h$ has a categorical output. Classification could, for instance, be used to classify emails to either spam or no spam. It also finds application in pattern recognition. % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6? 
-The case of an classification task that has a need to classify data into two distinguished classes is called \emph{binary classification}. The alternative case is \emph{multiclass classification}, which aims to classify data points into one of multiple different classes.
-\\
+For regression the hypothesis $h$ has a continuous output. Regression could, for instance, be used to approximate a function for a stock price and predict a future stock price as a numerical value on a continuous range of possible prices.\\
+For classification the hypothesis $h$ has a categorical output. Classification could, for instance, be used to classify emails to either spam or no spam. It also finds application in pattern recognition. 
+% http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf 6? 
+The case of an classification task that has a need to classify data into two distinguished classes is called \textit{binary classification}. The alternative case is \textit{multiclass classification}, which aims to classify data points into one of multiple different classes.\\
 
 Further the setting of \emph{supervised binary classification} is explored in more detail. This setting is important for the intend of this paper.
 % http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf
@@ -36,9 +35,9 @@ Assessing the quality of a model is essential to choosing the right method or co
 \\
 
 \subsection*{Evaluation metrics}
-Assume a binary classification algorithm is trained on a dataset, that has samples (data points) of the classes 1 and 0. The created model $h(X)$ predicts a class label for for a given sample $X$. Assume the samples of the class 1 are relevant. The model performance is examined in regards to the class 1 in the following. 
+Assume a binary classification algorithm is trained on a dataset, that has samples (data points) of the classes 1 and 0. In the following, the created model $h(X)$ predicts a class label for for a given sample $X$. Assume the samples of the class 1 are relevant. The model performance is examined in regards to the class 1. 
 \\
-Let the  \emph{positives} ($pos$) be the set of all samples where the class label is 1. In contrast let the emph{negatives} ($neg$) be the set of all samples where the class label is 0.
+Let the set \emph{positives} ($pos$) be the set of all samples where the class label is 1. In contrast let the set \emph{negatives} ($neg$) be the set of all samples where the class label is 0.
 \\
 The model $h(X)$ predicts some samples as positives and some as negatives. The prediction doesn't always coincide with the true class labels.
 \\
@@ -52,23 +51,23 @@ Again, in contrast the samples that the model identifies as negatives but that a
 The most basic metrics of a classifier are it's \emph{precision} and \emph{recall}.
 \\
 
-\emph{Precision} is defined as the ratio of true positives to all positives the model $h$ identified in the training data(true positives + false positives):
+\emph{Precision} is defined as the ratio of true positives to all positives, that the model $h$ identified in the training data(true positives + false positives):
 \begin{equation} \label{eq:ev1}
-\text{Precision}=\frac{tp}{tp+fn}
+\text{Precision}=\frac{tp}{tp+fp}
 \end{equation}
 The precision can be interpreted as a measure of how good a model is at identifying only the positives as positive, while avoiding to misclassify negatives as positives. 
 \\
 
 \emph{Recall} is defined as the ratio of true positives to all positives the model $h$ identified in the training data:
 \begin{equation} \label{eq:ev1}
-\text{Precision}=\frac{tp}{pos}
+\text{Recall}=\frac{tp}{tp+fp}
 \end{equation}
-The recall can be interpreted as a measure of how good a model is at identifying all the positives and missing as little positives as possible.
+The recall can be interpreted as a measure of how good a model is at identifying all the positives, while missing as little positives as possible.
 \\
 
-Intuitively it can be seen that precision and recall have a inverse relationship to each other. For instance, if generally more samples are identified as positives by a model, the true positive rate rises, hence the recall. But the chance of identifying negatives as positives also rises such that the precision decreases.
+Intuitively it can be seen that precision and recall have a inverse relationship to each other. For instance, if generally more samples are identified as positives by a model, the true positive rate rises, hence the recall. But the chance of identifying negatives as positives also rises and consequently the precision decreases.
 \\
-The goal of creating a model with any given method is to increase both, precision and recall, simultaneously. Nevertheless in some use cases it may be of advantage to value a good recall higher than a good precision or vice versa. This might be the case if it is very important to find all the positives, while not caring that much about false negatives (``false alarms'').
+The goal of creating a model with any given method is to increase both, precision and recall, simultaneously. Nevertheless in some situations it may be of advantage to value a good recall higher than a good precision or vice versa. This might, for instance, be the case if it is very important to find all the positives, while not caring that much about false negatives (``false alarms'').
 \\
 
 A way to merge the two metrics in a joined metric, both for the case of equal and  unequal importance, is the \emph{f-score}, also called \emph{f\textsubscript{$\beta$}-score}.
@@ -83,28 +82,29 @@ If  $\beta>1$ more weight is put on the recall,  if  $\beta<1$ more weight is pu
 \\
 For instance a f\textsubscript{2}-score  would put more weight on the recall of a classifier:
 \begin{equation} \label{eq:ev3}
-f_\beta = (1+2^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(2^2 \cdot \text{precision}) + \text{recall}}
+f_2 = (1+2^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(2^2 \cdot \text{precision}) + \text{recall}}
 \end{equation}	
 
 On the other side a f\textsubscript{0.5}-score  would put more weight on the precision of a classifier:
 \begin{equation} \label{eq:ev4}
-f_\beta = (1+0.5^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(0.5^2 \cdot \text{precision}) + \text{recall}}
+f_0.5 = (1+0.5^2) \cdot \frac{\text{precision} \cdot \text{recall}}{(0.5^2 \cdot \text{precision}) + \text{recall}}
 \end{equation}	
 
 In the case of equal importance, the f\textsubscript{1}-score is used, which is the \emph{harmonic mean} of precision and recall:
 \begin{equation} \label{eq:ev5}
-f_\beta = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}
+f_1 = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}
 \end{equation}	
 \\
 
-A, weighted or not weighted, f\textsubscript{$\beta$}-score can be used to compare different approaches to a classification problem to each other. 
+A, weighted or not weighted, f\textsubscript{$\beta$}-score can be used to compare different approaches to a classification problem to each other. \cite{evalmetrics} \cite{evalmetrics2}
+
 % Goutte, Cyril und Gaussier, Eric, 2005. A Probabilistic Interpretation of Precision, Recall and F-Score, with Implication for Evaluation, In: 27th European Conference on IR Research. Santiago de Compostela, Spain, March 2005
 
 \subsection*{Validation scheme}
 
-To measure the recall, precision or other performance metrics of a model, the model has to be tested. Testing a model is done with data, that the model hasn't ``seen'' yet, meaning data points that weren't used in training the model. This is usually done by \emph{randomly} selecting a small fraction of all the available data and setting it aside as \emph{testing data}. This data is used to test a model and evaluate it's performance later on. The remaining data is used to train or fit the model. It is called \emph{training data}. 
+To measure the recall, precision or other performance metrics of a model, the model has to be tested. Testing a model is done with data, that the model hasn't ``seen'' yet, meaning data points that weren't used in training of the model. This is usually done by \textit{randomly} selecting a small fraction of all the available data and setting it aside as \textit{testing data}. This data is used to test a model and evaluate it's performance later on. The remaining data is used to train or fit the model. It is called \textit{training data}. 
 \\
-Doing this random selection into training and testing data can lead to problems: Depending on the random split that is done, the testing data may, by chance, be very hard to classify in comparison to the training data. This would lead to a exaggerated bad performance of the classifier when testing. On the other side, if the testing data is easy to classify in comparison to the training data later evaluation would show a better performance than it might have in reality.
+Doing this random selection into training and testing data can lead to problems: Depending on the random split that is done, the testing data may, by chance, be very hard to classify in comparison to the training data. This would lead to a exaggerated bad performance of the classifier when testing. On the other side, if the testing data is easy to classify in comparison to the training data later evaluation would show a better performance than it might actually have.
 \\
 
 To counteract this phenomenon \emph{cross-validation} is performed for testing. Cross-validation involves partitioning the available data into training and testing data multiple times, evaluation for a specific metric, and average the results. A cross-validation approach that is relevant for this paper is \emph{k-fold validation}.
@@ -117,7 +117,7 @@ In k-fold validation the available data is split into $k$ equal sized, non-overl
 % https://pdfs.semanticscholar.org/0be0/d781305750b37acb35fa187febd8db67bfcc.pdf
 % http://ai.stanford.edu/people/nilsson/MLBOOK.pdf  82
 
-Cross-validation averages many tests with different test and training data to achieve a consistent evaluation of a classifier with low variance between test.
+Cross-validation averages many tests with different test and training data to achieve a consistent evaluation of a classifier. \cite{RonKohavi.1995} \cite{kfold}
 
 \section{Algorithms}
 This section will introduce basic concepts and specific algorithms for the classification setting. The purpose of this section is to give a introduction into methods and tools used in this paper and give the reader a understanding of the underlying principles. Some topics may be oversimplified or not discussed in their whole complexity. The reason for this is, that it is beyond the scope of this theory section.
@@ -140,7 +140,7 @@ Before getting into specific algorithms, a few basic concepts, relevant for most
 %}
 
 \textbf{Model linearity}: \\
-A classification model classifies data points according to their feature vector. Visualized in a $n$-dimensional feature space, this means classification depends on the position of a data point in the feature space. The decision of a model to classify a region in feature space as one class or another can be represented by a \emph{decision boundary}. Data points laying on the one side of the decision boundary will be classified to one class while data points on the other side are classified to another class.
+A classification model classifies data points according to their feature vector. Visualized in a $n$-dimensional feature space, this means classification depends on the position of a data point in the feature space. The decision of a model to classify a region in feature space as one class or another can be represented by a \emph{decision boundary} in the feature space. Data points laying on the one side of the decision boundary will be classified to one class while data points on the other side are classified to another class.
 \\
 
 This decision boundary of a model can have any form. If the form of the decision boundary is linear, meaning the decision boundary can be represented by a linear function in the form 
@@ -148,55 +148,13 @@ This decision boundary of a model can have any form. If the form of the decision
 f(x)=\beta_0 + \beta_1 X_1 + ... + \beta_n X_n
 \end{equation}
 in a $n$-dimensional feature space, the model is \emph{linear}.\\
-If this isn't the case the model is \emph{non-linear}.
+If this isn't the case the model is \emph{non-linear}. \cite{James.2013}
 \\
 
 %itsl
-\textbf{Bias-variance tradeoff}: \\
-Assume a model tries to approximate a function $f$.
-\\
+\textbf{Variance}: \\
 
-The \emph{bias error} of a model are errors, like misclassification, due to simplified assumptions made by a model. The bias of a model are these simplifying assumptions. 
-\\
-\emph{Low bias} of a model means less assumptions about a function $f$ are made. 
-\\
-\emph{High bias} of a model means more assumptions about a function $f$ are made. 
-\\
-
-The \emph{variance error} of a model are errors due to simplified assumptions made by a model. The bias of a model are these simplifying assumptions. 
-\\
-\emph{Low variance} of a model means changes in the training data, like added noise, will not have a big impact on the resulting model.
-\\
-\emph{High variance} of a model means changes in the training data, like added noise, will have a big impact on the resulting model.
-\\
-
-Bias and variance have a inverse relationship to each other.\\
-Low Bias and high variance leads to \emph{overfitting}. This means a model makes little assumptions about the form of $f$ and rather ``memorizes'' the training data points. The model doesn't \emph{generalize} very well.
-\\
-High Bias and low variance leads to \emph{underfitting}. This means a model makes too many assumptions about the form of $f$ and misses a more subtle relationships in the data. The model doesn't \emph{gerneralize} the problem enough.
-\\
-
-\textbf{Loss function and regularization}: \\
-A \emph{loss function} are used in many parameter estimation tasks for various supervised learning tasks.
-\\
-The loss function maps an an error of a model, for instance the severity of a misclassification, to some value representing a ``cost'' associated with the error.
-\\
-Some commonly used loss functions are ``Logistic Loss'', ``Least Squares Error'' or ``Least Absolute Error''.
-\\
-
-\emph{Regularizations} restrict the values of parameters chosen for a model $h$, by penalizing big differences of target and estimated value,  in a way that prevents overfitting. The most commoly used regularizations are \emph{L1 regularization} and \emph{L2 regularization}.
-
-\textbf{L1 regularization:}\\
-$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
- L1 regularization minimizes the sum of the absolute differences of target and estimated value.
-\\
-\textbf{L2 regularization:}  \\
-$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
- y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
- L2 regularization minimizes the square of the absolute differences of target and estimated value.
-\\
-%http://orbi.ulg.ac.be/bitstream/2268/25737/1/geurts-phd2002.pdf
+\emph{Variance} is an error that is caused because a model varies too much with the data used for training. If a algorithm is too sensitive and captures random patterns in the training dataset it has high variance. This leads to \emph{overfitting}. Overfitting on the training data means the model doesn't make assumptions about the data that are general enough and just ``memorizes'' the training data points. Then it can be said the model doesn't \emph{generalize} enough. A high variance leads to low generalization of a model.
 
 In the following sections the basics of certain relevant classification algorithms will be explained.
 
@@ -204,16 +162,16 @@ In the following sections the basics of certain relevant classification algorith
 In this chapter the support vector classifier will be introduced. The method was developed in the 1990’s and is often used as one of the best performing ``out of the box'' classifiers. The goal of a linear support classifier is to find a function for a \emph{hyperplane} that splits the data points of two classes as best as possible. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
 A model based on a support vector classifier is linear.
 \subsubsection*{Hyperplane classification}
-The goal of the maximal margin classifier is to classify data by finding a hyperplane that optimally separates two classes in a dataset. Data points are either in class $y=f(x)=-1)$ or $y=f(x)=1)$. 
+The goal of the \emph{hyperplane classification} is to classify data by finding a hyperplane that optimally separates two classes in a dataset. Assume data points are either in class $y=f(X)=-1$ or $y=f(X)=1$. 
 \\
-A hyperplane is a flat affine subspace of dimension $p-1$, where p is the number of dimensions the hyperplane is in. In the case of a maximal margin classifier the number of dimensions which a hyperplane will be constructed in is the number dimension of the feature space. This stems from the intention to separate data points which have a feature vector of $p$ dimensions. Accordingly a hyperplane is defined by
+A hyperplane is a flat affine subspace of dimension $p-1$, where p is the number of dimensions of the parameter space. In the case of a maximal margin classifier the number of dimensions which a hyperplane will be constructed in is the number dimension of the feature space. This stems from the intention to separate data points which have a feature vector of $p$ dimensions. Accordingly a hyperplane is defined by
 \begin{equation} \label{eq:1}
 \beta_0 + \beta_1 X_1 + ... + \beta_p X_p = 0
 \end{equation}
 for a feature space of dimension p. It can be said that $\beta_0$  to $\beta_p$ ``define'' the hyperplane.
 If a point $X=(x_1,x_2,...,x_p)$ lies on the hyperplane, the point features $x_1$ to $x_p$ would satisfy the equation \ref{eq:1}.
 \\
-If this doesn't hold true but
+If this doesn't hold true, but
 \begin{equation} \label{eq:2}
 \beta _0 + \beta _1 X_1 + ... + \beta_p X_p > 0
 \end{equation}
@@ -232,7 +190,7 @@ The \emph{magnitude} of $h(X)$ can be used to derive a confidence score for the 
 
 If a class separating hyperplane exist there exists an infinite number of such hyperplanes separating the classes (a hyperplane can always be moved or varied slightly while still remaining class separating). The question arises which hyperplane should be used. 
 \\
-A maximal margin classifier uses the hyperplane, where the distance to the next data point  is the biggest under all possibilities. The distance to the next data point is called the \emph{margin}. A hyperplane that has the biggest possible margin is a \emph{maximal margin hyperplane}. Data points where the distance to the maximal margin hyperplane is equal to the margin are the \emph{support vectors} as seen in figure \ref{fig:mmh}. The maximal margin hyperplane depends on the support vectors because moving or removing the support vectors would change the hyperplane. Moreover the vectors that are further away from the hyperplane than the support vectors don't contribute to definition of the hyperplane. This allows the hyperplane to be solely defined by the support vectors.\\
+A maximal margin classifier uses the hyperplane, where the distance to the next data point  is the biggest under all possibilities. The distance to the next data point is called the \emph{margin}. A hyperplane that has the biggest possible margin is a \emph{maximal margin hyperplane}. Data points, for which the distance to the maximal margin hyperplane is equal to the margin, are called \emph{support vectors} (see figure \ref{fig:mmh}). The maximal margin hyperplane depends on the support vectors because moving or removing the support vectors would change the hyperplane. Moreover the vectors that are further away from the hyperplane than the support vectors don't contribute to the definition of the hyperplane. This allows the hyperplane to be solely defined by the support vectors.\\
 
 \begin{figure}[h]
 \centering
@@ -243,18 +201,20 @@ A maximal margin classifier uses the hyperplane, where the distance to the next 
 
 To find a maximal margin hyperplane the parameters of the hyperplane have to be set in a way that maximises the size of the margin $M$ and
 \begin{equation} \label{eq:7}
-y_i(\beta_0+beta_1 x_i1 +\beta_2 x_i2 + ... +\beta_p x_ip) \leq M   \forall i=1,...,n
+y_i(\beta_0+beta_1 x_i1 +\beta_2 x_i2 + ... +\beta_p x_ip) \leq M \text{     }  \forall i=1,...,n
 \end{equation}
 holds.
-$y_i$ is the true class of the $i$th data point. If all data points are classified correctly, which is the goal, the left side of the equation \ref{eq:7} is always positive. This is because either both $y_i$ and $f(X_i)$ are negative or both are positive. The right side of the equation makes sure that every data point has a minimal distance of M to the hyperplane.
+$y_i$ is the true class of the $i$th data point. 
+\\
+If all data points are classified correctly, which is the goal, the left side of the equation \ref{eq:7} is always positive. This is because either both $y_i$ and $f(X_i)$ are negative or both are positive. The right side of the equation makes sure that every data point has a minimal distance of M to the hyperplane.
 
-The maximal margin classifier has some faults that have to be considered. Because the data points are of a class are strictly separated by a hyperplane of a linear form from the other class, it is not possible to find a hyperplane if the classes are not linear separable.  Furthermore even when the classes are linear separable the hyperplane pound might be forced in a unfavourable spot by only one single data point that doesn't represent most of the other data points of the same class. The extension to a support vector classifier solves those problems.
+The maximal margin classifier has some faults that have to be considered. Because the data points of a class are strictly separated by a hyperplane of a linear form from the other class, it is not possible to find a hyperplane if the classes are not linear separable.  Furthermore even when the classes are linear separable the hyperplane might be forced in a unfavourable spot by only one single data point that doesn't represent most of the other data points of the same class. The extension to a support vector classifier solves those problems.
 
 \subsubsection*{Support vector classifier}
 
 To solve the above mentioned faults the \emph{support vector classifier}, also called \emph{soft margin classifier}, allows some data points of the training data to be not on the correct side of the margin or the hyperplane. 
 \\
-To find a hyperplane for a support vector classifier the parameters of the hyperplane have to be set in a way that maximises the size of the margin $M$ and the equations 
+To find a hyperplane for a support vector classifier, the parameters of the hyperplane have to be set in a way, that maximises the size of the margin $M$ and the equations 
 \begin{equation} \label{eq:8}
 y_i(\beta_0+beta_1 x_i1 +\beta_2 x_i2 + ... +\beta_p x_ip) \leq M(1- \epsilon_i ) \forall i=1,...,n
 \end{equation}
@@ -264,41 +224,29 @@ y_i(\beta_0+beta_1 x_i1 +\beta_2 x_i2 + ... +\beta_p x_ip) \leq M(1- \epsilon_i 
 \end{equation}
 
 both hold.\\
-The concept is similar to the one seen in equation \ref{eq:7}. Differentiating here are the \emph{slack variables} $\epsilon_1, ..., \epsilon_n$. $\epsilon_i$ indicates where the $i$th data point is located relative to the hyperplane and it's margin. If the $i$th data point is on the correct side of the margin $\epsilon_i=0$. If the $i$th data point is on the correct side of the hyperplane but on the wrong side of the margin it \emph{violates} the margin and $\epsilon_i=0$. If the $i$th data point is on the wrong side of the hyperplane then $\epsilon_i=0$.  \\
-C is a tuning parameter that limits the total sum of $e_i$s.\\
+The concept is similar to the one seen in equation \ref{eq:7}. Differentiating here are the \emph{slack variables} $\epsilon_1, ..., \epsilon_n$. $\epsilon_i$ indicates where the $i$th data point is located relative to the hyperplane and it's margin.
+\\
+ If the $i$th data point is on the correct side of the margin $\epsilon_i=0$. If the $i$th data point is on the correct side of the hyperplane but on the wrong side of the margin, it \emph{violates} the margin and $\epsilon_i>0$. If the $i$th data point is on the wrong side of the hyperplane then $\epsilon_i>1$.  \\
+C is a hyper-parameter that limits the total sum of $e_i$s.\\
 A bigger C allows more datapoints to violate the margin or be on the wrong side of the hyperplane. \\
 This way a hyperplane can be found even when the classes are not strictly linearly separable and isolated outlier data points that would  distort the resulting hyperplane can be mostly ignored.\\
 
 
-With a support vector classifier it's now possible to create a model $h$ that can be trained on data with non linear separable classes. The model takes a data point and classifies it to either one class ($h(x)<0$) or the other class ($h(x)>0$). The magnitude $|h(x)|$ can be interpreted as confidence score of the classification.
- 
-%An introduction to statistical learning
-%@Article{Burges1998,
-%author="Burges, Christopher J.C.",
-%title="A Tutorial on Support Vector Machines for Pattern Recognition",
-%journal="Data Mining and Knowledge Discovery",
-%year="1998",
-%month="Jun",
-%day="01",
-%volume="2",
-%number="2",
-%pages="121--167",issn="1573-756X",
-%doi="10.1023/A:1009715923555",
-%url="https://doi.org/10.1023/A:1009715923555"
-%}
+With a support vector classifier it's now possible to create a model $h$ that can be trained on data with non linear separable classes. The model takes a data point and classifies it to either one class ($h(x)<0$) or the other class ($h(x)>0$). The magnitude $|h(x)|$ can be interpreted as confidence score of the classification.\cite{Burges1998} \cite{james2013introduction}
+
 
 \subsection{Logistic regression}
 In this chapter the logistic regression will be introduced. The goal of logistic regression is to create a classifier which predicts the probability for a given data point  to belong to a certain class. A model based on a support vector classifier is linear.
 \\
 
-The probability of a data point $X$ with $p$ parameters belonging to a class can be written as the probability of a class $c$ under the condition of $X$:
+The probability of a data point $X$ with $p$ parameters belonging to a class $c$, can be written as the probability of a class $c$ under the condition of $X$:
 \begin{equation} \label{eq:4}
 p(c|X) \in [0,1]
 \end{equation}
 The model $h(X)=p(c=1|X)$ gives the probability of a data point $X$ being of the class 1.
 \\
 
-Logistic regression is based on a linear regression. Linear regression models a linear function. It tries to choose the function parameters $\beta_0, ..., \beta_p$ in a way  that the function approximately goes through every data point in the training data it was derived from. \ref{eq:5}. 
+Logistic regression is based on a linear regression. Linear regression models a linear function. It tries to choose the function parameters $\beta_0, ..., \beta_p$ in a way,  that the function approximately goes through every data point in the training data it was derived from.
 \begin{equation} \label{eq:5}
 y=\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + + \beta_n x_n
 \end{equation}
@@ -308,40 +256,39 @@ The \emph{standard logistic function}, as seen in \ref{eq:10}, has the property 
 \begin{equation} \label{eq:10}
 f(x)=\frac{1}{1+e^-x}=\frac{e^x}{1+e^x}
 \end{equation}
-Utilizing the linear regression in equation \ref{eq:5} the output is now transformed with the standart logistic function:
+Utilizing the linear regression in equation \ref{eq:5} the output is now transformed with the standard logistic function:
 
 \begin{equation} \label{eq:11}
 h(x)=\frac{e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n}}{1+e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + + \beta_n x_n}}
 \end{equation}
 
 The function parameters $\beta_1$ to  $\beta_n$ are estimated based on the given data points.  \\
-This way logistic regression creates a model which predicts the probability of a data point being in a certain class.
+This way logistic regression creates a model which predicts the probability of a data point being in a certain class. \cite{cox1958regression}
 
-% https://www.jstor.org/stable/pdf/2983890.pdf?refreqid=excelsior:3ac2d6a000fa78f731ab46b8659528c0
-D. R. Cox, The Regression Analysis of Binary Sequences 1958
 \subsection{Decision tree}
 %Classification and Regression Trees Leo Breiman, Jerome Friedman, Charles J. Stone, R.A. Olshen (1984)
 % http://hunch.net/~coms-4771/quinlan.pdf
 % https://pdfs.semanticscholar.org/f1c3/683cacc3dc7898f3603753af87565f8ad677.pdf
 
-In this chapter the decision tree will be introduced. The goal of a decision tree is to create a classifier which splits the segments the feature space into subspaces and classifies new data point according to which subspace it is in. A model based on a decision tree is non-linear.
+In this chapter the decision tree will be introduced. The goal of a decision tree is to create a classifier which splits the feature space into subspaces and classifies new data point according to which subspace it is in. A model based on a decision tree is non-linear.
 \\
 
-The task that a decision tree accomplishes is splitting the feature space into meaningful slices with which the create model can classify new data points.
-This is done by splitting the feature space multiple times recursively. That means After a split two created subspaces are then further split. This recursive splitting can also be visualized in a binary tree. This binary tree is called a \emph{decision tree}. Each node represents a split of the feature (sub-)space.  Only the terminal nodes don't represent a split and rather an area of the feature space that corresponds to a specific class. First the decision making process is explained. Then the mapping of a terminal node to a class is explained.
+The task, that a decision tree accomplishes, is splitting the feature space into meaningful slices, with which the create model can classify new data points.
 \\
-The tree is constructed iteratively and top-down (starting at the root of the tree). This is often called \emph{recursive binary splitting}. Construction follows a \emph{greedy} approach, meaning a node is created only considering the benefit that comes with a certain splitting rule for this split, not looking into the future and assessing the benefit of a certain splitting rule for the later tree.
+This is done by splitting the feature space multiple times recursively. That means after a split, the two created subspaces are then further split. This recursive splitting can also be visualized in a binary tree. This binary tree is called a \emph{decision tree}. Each node represents a split of the feature (sub-)space.  Only the terminal nodes don't represent a split and rather an area of the feature space that corresponds to a specific class. First the decision making process is explained. Then the mapping of a terminal node to a class is explained.
 \\
-Splitting a space of any dimension into two subspaces needs two aspects: The axis on which the split is done and the place on the axis where the split is done. Accordingly a splitting rule can be written as follows:
 
+The tree is constructed iteratively and top-down (starting at the root of the tree). This is often called \emph{recursive binary splitting}. Construction follows a \emph{greedy} approach, meaning a node is created only considering the benefit that comes with a certain splitting rule for this step, not planning for the future and assessing the benefit of a certain splitting rule for the later tree.
+\\
+Splitting a space of any dimension into two subspaces requires two aspects to be considered: The axis on which the split is done and the place on the axis where the split is done. Accordingly a splitting rule can be written as follows:
 \begin{equation} \label{eq:12}
 a \leq c
 \end{equation}
 where $a$ represents one of $p$ axis in an p-dimensional feature space and c represents a value in the domain of axis $a$.
-This decision rule splits the feature space orthogonal to the axis $a$ where the value$ of a = c$.
+This decision rule splits the feature space orthogonal to the axis $a$, where the value of $a = c$.
 \\
-The question arises how this decision rule should be chosen for any given feature (sub-)space.
-In the ideal case the a split is placed in a way that separates most data point from one class from the data points of the other class and leaves two most ``pure'' subspaces. The \emph{impurity} of a subspace is most commonly measured by the following metrics. 
+The question arises, how this decision rule should be chosen.
+In the ideal case a split is placed in a way that separates most data point from one class from the data points of the other class and leaves two most ``pure'' subspaces. The \emph{impurity} of a subspace is most commonly measured by the following metrics. 
 \\
 \textbf{Gini impurity:}  \\
 \begin{equation} \label{eq:13}
@@ -354,41 +301,45 @@ $C$ is the number of unique labels and f\textsubscript{i} is the frequency of la
 \end{equation}
 $C$ is the number of unique labels and f\textsubscript{i} is the frequency of label $i$ in a created feature subspace. For binary classification C is maximal 2. \\
 \\
-To reach the highest ``purity'', either one of the metrics has to be minimized. \\
-Finding the optimal split requires finding $a$ and $c$ such that the splitting rule  $a \leq c$ minimizes the sum of the impurity measures for both forming feature subspaces. The impurity measures commonly used are Ginni impurity (equation \ref{eq:13}) and Entropy (equation \ref{eq:13}). 
+To reach the highest ``purity'', either one of the metrics has to be chosen and minimized. \\
+Finding the optimal split requires finding $a$ and $c$ such that the splitting rule  $a \leq c$ minimizes the sum of the impurity measures for both forming feature subspaces.
+\\
+The impurity measures commonly used are Ginni impurity (equation \ref{eq:13}) and Entropy (equation \ref{eq:13}). 
 \\
 The iterative splitting or growing of the tree is stopped when either a certain height of the tree is reached, a minimal number of trainings data points in one terminal node is undercut or the purity of a subspace can't be significantly improved by another split.
 \\
 
-Now that a decision tree is constructed every terminal node is assigned a class prediction. The class prediction of a terminal node is simply the most common class of the data points in the feature subspace that the terminal node represents. For later ensemble methods based on a decision tree it is important to note, that a terminal node $t$ can not only predict but also give the probability $p(C_i|X)$ of a class $C_i$:
+Now that a decision tree is constructed every terminal node is assigned a class prediction. The class prediction of a terminal node is simply the most common class of the data points in the feature subspace, that the terminal node represents.
+\\
+For later ensemble methods based on a decision tree, it is important to note, that a terminal node $t$ can not only predict but also give the probability $p(C_i|X)$ of a class $C_i$:
 \begin{equation} \label{eq:20}
 p_t(C_i|X)=\frac{\text{number of data labeles as class }C_i\text{ in terminal node }t}{\text{total number of data points in termin node }t}
 \end{equation}
 \\
 
-A decision tree model can classify any new data point by passing it from the root of the decision tree to a terminal node, which holds the class prediction, by simply following the decision rules either to the right to the left child node (depending on how the tree is implemented) if the decision rule ( as seen in equation \ref{eq12}) holds and to the other side if it doesn't.\\
-Decision trees have the advantage that the decision rules of a model are easy to understand and can be displayed graphically. 
-But a decision tree has also disadvantages, especially a high variance is often occurring, which leads to overfitting. This problem is counteracted by using \emph{decision tree assembles} like \emph{random forest} or \emph{boosted trees}. The two algorithms are explained in the following.
+A decision tree model can classify any new data point by passing it from the root of the decision tree to a terminal node, which holds the class prediction, by simply following the decision rules either to the right to the left child node (depending on how the tree is implemented) if the decision rule ( as seen in equation \ref{eq:12}) holds and to the other side if it doesn't.
+\\
+Decision trees have the advantage that the decision rules of a model are easy to understand and can be displayed graphically. \cite{Breiman.post2005cop.1984} \cite{Seni.2010}
+\\
 
-% https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
+But a decision tree has also disadvantages, especially a high variance is often occurring, which leads to overfitting. This problem is counteracted by using \emph{decision tree assembles} like \emph{random forest} or \emph{boosted trees}. The two algorithms are explained in the following.
 
 \subsection{Random forest}
 
 In this chapter random forests will be introduced. The method utilizes decision trees and creates an assemble of trees improving, among others, on the high variance of a single decision tree. 
 A model based on a random forest is non-linear.
 \\
-To reduce variance the method uses the fact that averaging a set of observations reduces variance in the resulting observation.
-\emph{Bagging} (also called \emph{bootstrap aggregation} utilizes exactly that fact. From the singe training set $\Xi$, $B$ subset are being created. On every subset of $\Xi$ a decision tree is constructed. The construction of a tree on a single bootstrapped subset is described below. The different models will then all vote in a \emph{majority vote} to come to a conclusion.
+To reduce variance, the method uses the fact that averaging a set of observations reduces variance in the resulting observation.
+\emph{Bagging} (also called \emph{bootstrap aggregation} utilizes exactly that fact. From the singe training set $\Xi$, subset are being created. On every subset of $\Xi$ a decision tree is constructed. The construction of a tree on a single subset is described below. The different models will then all vote in a \emph{majority vote} to come to a conclusion.
 \\
-Additional to bagging the random forest has another speciality when training models. Only bagging decision trees would lead to very similar trees.
-Random forest prevents this during the tree construction phase. A decision tree algorithm decides on a split, in particular on the axis or feature, and on the value where the split is done. A random forest algorithm prohibits the decision for some axis, each time a decision rule is created. In other words, for every decision rule there is a randomly chosen subset of all axis or features possible to choose from.\\
-This way the construction algorithm is encouraged to make splits that are not always optimal but may lead to a better performing decision the in the long run by chance.
+Additional to bagging the random forest has another speciality when training models. Just bagging multiple decision trees would lead to an ensemble of very similar trees. Random forest prevents this during the tree construction phase.
+\\
+ A decision tree algorithm decides on a split, in particular on the axis or feature, and on the value where the split is done. A random forest algorithm prohibits the decision for some axis, each time a decision rule is created. In other words, for every decision rule there is a randomly chosen subset of all axis or features possible to choose from.\\
+This way the construction algorithm is encouraged to make splits that are not always optimal at this step, but may lead to a better performing decision the in the long run.
 \\
 To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point.
-The method reduces variance and minders the risk of overfitting. Another method that improves prediction rules is boosting and will be discussed in the next chapter.
+The method reduces variance and minders the risk of overfitting. Another method that improve on the high variance is boosting and will be discussed in the next chapter. \cite{Breiman2001}
 
-% https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (72)
-%Breiman L., Random forests. In Machine Learning, Seiten 5-32, 2001
 \subsection{Boosted trees}
 
 In this chapter Boosted trees will be introduced. The method also utilizes decision trees and tackles the problem of the high variance of a single decision tree. 
@@ -404,9 +355,11 @@ To enhance the existing tree or tree ensemble it firstly has to be assessed wher
  \begin{equation} \label{eq:20}
 r_i=y_i-h(X_i)
 \end{equation}
-Here $y_i$ is the true label of the data point $X_i$ and $h(X_i)$ is the prediction of the model. Note that this prediction$h(X_i)$ is the probability of the class $C_i$, as mentioned in the section ``Decision tree''. The residuals that emerge from this process for every data point can be seen as a \emph{weight} for all data points. The higher the residual of a data point, the worse the tree or ensemble of trees was at classifying it correctly. That means the model is weak at data points with high residual. In the next step more attention should be given to data points with high residual, to counteract these weak points.
+Here $y_i$ is the true label of the data point $X_i$ and $h(X_i)$ is the prediction of the model. Note that this prediction $h(X_i)$ is the probability of the class $C_i$, as mentioned in the section ``Decision tree''.
 \\
-The next tree will not be fitted to the the initial labels $y_i$ of the training set, but to the residuals of the previous tree. This gives the data points a weight. Data points with higher weight are more relevant to construction of the decision tree. This makes sense because a heigh residual means a weak performance of the previouse decision tree or ensemble. This means for the following constructed decision tree $y_i$ will be set to $r_i$ ($y_i=r_i$).
+The residuals that emerge from this process for every data point can be seen as a \emph{weight} for all data points. The higher the residual of a data point, the worse the tree or ensemble of trees was at classifying it correctly. That means the model is weak at data points with high residual. In the next step more attention should be given to data points with high residual, to counteract these weak points.
+\\
+The next tree will not be fitted to the the initial labels $y_i$ of the training set, but to the residuals of the previous tree. This gives the data points a weight. Data points with higher weight are more relevant to construction of the  next decision tree. This makes sense because a heigh residual means a weak performance of the previous decision tree or ensemble. This means for the following constructed decision tree $y_i$ will be set to $r_i$ ($y_i=r_i$).
 \\
 Each created tree is added to the tree ensemble and the process is repeated until a stopping criterion is reached, like the maximal number of trees in the ensemble or a minimum threshold of enhancement in performance is undercut in one iteration.
  %http://stattrek.com/statistics/dictionary.aspx?definition=residual
@@ -414,30 +367,29 @@ Each created tree is added to the tree ensemble and the process is repeated unti
 Side note: In a gradient boosted tree algorithm, the weights are not only getting updated by the residuals, but a gradient descent procedure is used to minimize a loss function when adding trees. The details of this will not be discussed for the reason of being beyond the scope of the theory section of giving a introduction to various methods.
 \\
 
-To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point. The method reduces variance and minders the risk of overfitting similar to the previous tree ensemble method.
-%Breiman, L. "Arcing The Edge" (June 1997)
-% https://wiki.eecs.yorku.ca/course_archive/2014-15/F/4412/_media/ensemble_data_mining.pdf 54 (somewhere)
+To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point. The method reduces variance and minders the risk of overfitting similar to the previous tree ensemble method.\cite{friedman2000additive} \cite{james2013introduction}
+
 \subsection{Naive Bayes}
-In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point. The goal of a naiv bayes classification is predicting a class by finding the highest of the probability of the probabilities of a given data point belonging to a class. The method primarily used in text classification.
-A model based on naiv bayes is non-linear.
+In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the other feature values of the data point. The goal of a naiv bayes classification is predicting a class by finding the highest probability of the all probabilities of a given data point belonging to a class. The method primarily used in text classification.
+A model based on naive bayes is non-linear.
 \\
 The method is explained in the general setting for multiclass classification.
 \\
-In the following we will regard data points $A$ with $n$ features $A_1$ to $A_n$. A concrete $X \in A$ with the features $x_1$ to $x_n$ where $n$ is the number of features of $X$, hence the length of the feature vector of $X$, is used. The $i$th class is denoted as $C_i$.\\
-The task of finding the probability of an given data point $X$ belonging to a specific class $C_i$ can be expressed as maximising the following expression for every $C_I$ :
+In the following we will regard data points $A$ with $n$ features $A_1$ to $A_n$. A concrete data point $X \in A$ with the features $x_1$ to $x_n$ where $n$ is the number of features of $X$, hence the length of the feature vector of $X$, is used. The $i$th class is denoted as $C_i$.\\
+The task of finding the probability of an given data point $X$ belonging to a specific class $C_i$ can be expressed as maximising the following expression for every $C_i$ :
 \begin{equation} \label{eq:nb1}
  p(C_i|X)
 \end{equation}
 The equation \ref{eq:nb1} is the a posteriori probability of $C_i$ conditioned on $X$.
 \\
-The initial goal of maximising $p(C_i|X)$ can be rewrote using \emph{Baye's theorem}:
+The initial goal of maximising $p(C_i|X)$ can be rewrote using \emph{Bayes' theorem}:
 \begin{equation} \label{eq:nb2}
 p(C_i|X)=\frac{p(X|C_i) P(C_i)}{P(X)}
 \end{equation}
 %An Essay Towards Solving a Problem in the Doctrine of Chances, Thomas Bayes
 $p(X)$ is the a priori probability of $X$. $p(C_i)$ is the a priori probability of $C_i$.
 \\
-The a priori probability of $X$ does not change when comparing probablities of $C_i$ conditioned on $X$. Therefore the factor can be dismissed in this comparison. This way the task is to maximise only the following term:
+The a priori probability of $X$ does not change when comparing probabilities of $C_i$ conditioned on $X$. Therefore the factor can be dismissed in this comparison. This way the task is to maximise only the following term:
 \begin{equation} \label{eq:nb3}
 p(X|C_i) p(C_i)
 \end{equation}
@@ -447,15 +399,15 @@ p(C_i)=\frac{\text{number of data points labelled as}C_i}{\text{number of total 
 \end{equation}
 This means this term doesn't has to be calculated again.
 \\
-Still the term
+The term
 \begin{equation} \label{eq:nb5}
 p(X|C_i)
 \end{equation}
-remains. Since $X$ can consist of many features and represents a big feature vector it is computational expensive to calculate $p(X|C_i)$. To simplify the computation involved a assumption is made that, in a sense, may be considered ``naive''.
+remains. Since $X$ can consist of many features and represents a big feature vector it is computational expensive to calculate $p(X|C_i)$ for every $X$ and $C_i$. To simplify the computation involved a assumption is made that, in a sense, may be considered ``naive''.
 \\
 The assumption made is \emph{class conditional independence}. This means the effect of an feature value of a data point on a given class is independent of the values of the other feature values of the data point. Mathematically that assumption allows the following:
 \begin{equation} \label{eq:nb6}
-p(X|C_i) \approx prod_{k=1}^{n} p(x_k|C_i)
+p(X|C_i) \approx \prod_{k=1}^{n} p(x_k|C_i)
 \end{equation}
 The probabilities $p(x_1|C_i), ... ,p(x_n|C_i)$ can be more easily calculated from the training data:
 For $A_k$ being continuous-valued the values are assumed to have a Gaussian distribution with a mean $\mu$ and standard deviation $\sigma$ defined by
@@ -470,12 +422,7 @@ so that for $p(X|C_i)$ holds:
 p(X|C_i) = p(x,\mu ,\sigma)
 \end{equation}
 
-This way the mean $\mu_Ci$ and the standard derivation $\sigma_Ci$ of values for features $A_k$ for training samples of class $C_i$ need to be calculated.
+This way the mean $\mu_{Ci}$ and the standard derivation $\sigma_{Ci}$ of values for features $A_k$ for training samples of class $C_i$ need to be calculated.
 \\
 
-A data point is predicted as a class $C_a \ in [C_1,...,C_k$ if and only if $C_a$ maximes $(X|C_i) p(C_i)$  for all classes.  
-
-% Russell, Stuart; Norvig, Peter (2003) [1995]. Artificial Intelligence: A Modern Approach (2nd ed.). Prentice Hall. ISBN 978-0137903955.
-%http://rizalespe.lecture.ub.ac.id/files/2015/10/DM-04-1-Klasifikasi.pdf
-% http://researchweb.watson.ibm.com/people/r/rish/papers/RC22230.pdf (IBM ressource)
-%info PDF in quellen
+A data point is predicted as a class $C_a \in [C_1,...,C_k]$ if and only if $C_a$ maximes $(X|C_i) p(C_i)$. \cite{friedman2000additive} \cite{russell1995modern} \cite{rish2001empirical}

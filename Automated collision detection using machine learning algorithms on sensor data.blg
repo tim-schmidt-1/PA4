@@ -1,0 +1,25 @@
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'Automated collision detection using machine learning algorithms on sensor data.blg'
+[76] biber-MSWIN32:287> INFO - === 
+[122] Biber.pm:347> INFO - Reading 'Automated collision detection using machine learning algorithms on sensor data.bcf'
+[250] Biber.pm:741> INFO - Found 17 citekeys in bib section 0
+[280] Biber.pm:3150> INFO - Processing section 0
+[367] Biber.pm:3307> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[378] bibtex.pm:1124> INFO - Decoding LaTeX character macros into UTF-8
+[383] bibtex.pm:985> INFO - Found BibTeX data source 'bibliography.bib'
+[499] Utils.pm:147> WARN - ISBN '3-540-25295-9, 978-3-540-25295-5' in entry 'evalmetrics2' is invalid - run biber with '--validate_datamodel' for details.
+[510] Utils.pm:147> WARN - Datamodel: Entry 'RonKohavi.1995' (bibliography.bib): Invalid format '08/20/2017' of date field 'urldate' - ignoring
+[586] Utils.pm:147> WARN - I didn't find a database entry for 'Burges1998' (section 0)
+[586] Utils.pm:147> WARN - I didn't find a database entry for 'james2013introduction' (section 0)
+[586] Utils.pm:147> WARN - I didn't find a database entry for 'cox1958regression' (section 0)
+[587] Utils.pm:147> WARN - I didn't find a database entry for 'Breiman2001' (section 0)
+[587] Utils.pm:147> WARN - I didn't find a database entry for 'friedman2000additive' (section 0)
+[587] Utils.pm:147> WARN - I didn't find a database entry for 'russell1995modern' (section 0)
+[587] Utils.pm:147> WARN - I didn't find a database entry for 'rish2001empirical' (section 0)
+[740] UCollate.pm:65> INFO - Overriding locale 'en_US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[741] UCollate.pm:65> INFO - Overriding locale 'en_US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[741] Biber.pm:3027> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'en_US'
+[741] Biber.pm:3031> INFO - No sort tailoring available for locale 'en_US'
+[769] bbl.pm:519> INFO - Writing 'Automated collision detection using machine learning algorithms on sensor data.bbl' with encoding 'UTF-8'
+[771] bbl.pm:615> INFO - Output to Automated collision detection using machine learning algorithms on sensor data.bbl
+[772] Biber.pm:108> INFO - WARNINGS: 9

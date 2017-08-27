@@ -10,7 +10,7 @@ The  \emph{estimator} in this case is a binary classifier. The 8 different binar
 \item{\textbf{a hyper-parameter space}} \\
 The \emph{hyper-parameter space} defines a set of parameters or combination of hyper-parameters that will be tested. From this set one element will be chosen as most fitting. Because every algorithm requires different hyper-parameters, the hyper-parameter space is different for every algorithm. The hyper-parameter space will be defined in the sections below for every algorithm. 
 \item{\textbf{a method for searching or sampling candidates}}\\
-The method that is chosen is grid search. Grid search is a brute force search, which uses an exhaustive searching through a defined hyper-parameter space. Models and iteratively trained and evaluated by a score function. The model scores are then compared. The hyper-parameters that produced the best performing model will be chosen as optimal ones for the algorithm.
+The method that is chosen is grid search. Grid search is a brute force search, which uses an exhaustive searching through a defined hyper-parameter space. Models and iteratively trained and evaluated by a score function. The model scores are then compared. The hyper-parameters that produced the best performing model will be chosen as optimal ones for the algorithm. \cite{gridsearch}
 \item{\textbf{a cross-validation scheme}} \\
 The  \emph{cross-validation scheme} used is a k-fold validation, with k=10.
 \item{\textbf{a score function}}\\
@@ -24,10 +24,18 @@ During the k-fold validation, the f\textsubscript{2}-score is calculated.\\
 After this process is done the hyper-parameters that resulted in the highest f\textsubscript{2}-score are chosen.\\
 In the following for each of the relevant algorithms a parameter space will be defined. The results of the hyper parameter search will then be presented.
 
-\subsection*{Linear SVM}
-The tunable hyper-parameters for the the linear SVM classifier is the regularization.  The possible regularizations are:\\
-\textbf{L1 regularization} \\
-\textbf{L2 regularization}  \\
+\subsection*{Linear SVC}
+The tunable hyper-parameters for the the linear SVC classifier is the regularization. The regularization gives a weight to errors (like misclassifications) made on the training set. The model tries to minimize that error. The possible regularizations are:\\
+\textbf{L1 regularization:}\\
+$\sum_{i=1}^{n}|y\textsubscript{i}-f(x\textsubscript{i})| $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
+ L1 regularization minimizes the sum of the absolute differences of target and estimated value.
+\\
+\textbf{L2 regularization:}  \\
+$\sum_{i=1}^{n}(y\textsubscript{i}-f(x\textsubscript{i}))^2 $ \\
+ y\textsubscript{i} is the target value and x\textsubscript{i} is the estimated value for y\textsubscript{i}.\\
+ L2 regularization minimizes the square of the absolute differences of target and estimated value.
+\\
 
 The hyper-parameter search reveals the following results for the two regularization approaches: \\
 
@@ -57,7 +65,7 @@ nodes near coords align={vertical},
 \\
 
 
-The best performing SVM model reaches a maximal {f\textsubscript{2}-score of \textbf{0.93} (precision:  0.77, recall: 0.98) with the following hyper-parameter:\\
+The best performing SVC model reaches a maximal {f\textsubscript{2}-score of \textbf{0.93} (precision:  0.77, recall: 0.98) with the following hyper-parameter:\\
 Regularization: \qquad  \qquad \textbf{l1 regularization}
 
 \subsection*{Logistic regression}
@@ -242,7 +250,7 @@ nodes near coords align={vertical},
 The best performing Gradient-boosted tree classifier reaches a maximal f\textsubscript{2}-score of \textbf{  0.97} (precision:  0.96, recall:  0.98) with the following hyper-parameters:\\
 Loss function:  \qquad \textbf{Least Absolute Error}\\
 Maximal depth: \qquad \textbf{2}
-
+\\
 
 \subsection*{Naive Bayes}
 
