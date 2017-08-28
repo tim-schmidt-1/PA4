@@ -159,7 +159,7 @@ If this isn't the case the model is \emph{non-linear}. \cite{James.2013}
 In the following sections the basics of certain relevant classification algorithms will be explained.
 
 \subsection{Linear support vector classifier}
-In this chapter the support vector classifier will be introduced. The method was developed in the 1990’s and is often used as one of the best performing ``out of the box'' classifiers. The goal of a linear support classifier is to find a function for a \emph{hyperplane} that splits the data points of two classes as best as possible. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
+In this chapter the support vector classifier will be introduced. The method was developed in the 1990s and is often used as one of the best performing ``out of the box'' classifiers. The goal of a linear support classifier is to find a function for a \emph{hyperplane} that splits the data points of two classes as best as possible. The support vector classifier is a extension of a maximal margin classifier. First  the concept of classification using a hyperplane and with a maximal margin classifier will be explained. Then the extension to a support vector classifier will be shown.
 A model based on a support vector classifier is linear.
 \subsubsection*{Hyperplane classification}
 The goal of the \emph{hyperplane classification} is to classify data by finding a hyperplane that optimally separates two classes in a dataset. Assume data points are either in class $y=f(X)=-1$ or $y=f(X)=1$. 
@@ -228,7 +228,7 @@ The concept is similar to the one seen in equation \ref{eq:7}. Differentiating h
 \\
  If the $i$th data point is on the correct side of the margin $\epsilon_i=0$. If the $i$th data point is on the correct side of the hyperplane but on the wrong side of the margin, it \emph{violates} the margin and $\epsilon_i>0$. If the $i$th data point is on the wrong side of the hyperplane then $\epsilon_i>1$.  \\
 C is a hyper-parameter that limits the total sum of $e_i$s.\\
-A bigger C allows more datapoints to violate the margin or be on the wrong side of the hyperplane. \\
+A bigger C allows more data points to violate the margin or be on the wrong side of the hyperplane. \\
 This way a hyperplane can be found even when the classes are not strictly linearly separable and isolated outlier data points that would  distort the resulting hyperplane can be mostly ignored.\\
 
 
@@ -370,7 +370,7 @@ Side note: In a gradient boosted tree algorithm, the weights are not only gettin
 To make predictions on a new data point  a majority vote across all decision trees is conducted and the winning class is predicted for the data point. The method reduces variance and minders the risk of overfitting similar to the previous tree ensemble method.\cite{friedman2000additive} \cite{james2013introduction}
 
 \subsection{Naive Bayes}
-In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the other feature values of the data point. The goal of a naiv bayes classification is predicting a class by finding the highest probability of the all probabilities of a given data point belonging to a class. The method primarily used in text classification.
+In this chapter naive bayes classification will be introduced. The method based on Bayes’ theorem. It is also assumed that the effect of an feature value of a data point on a given class is independent of the other feature values of the data point. The goal of a naive bayes classification is predicting a class by finding the highest probability of the all probabilities of a given data point belonging to a class. The method primarily used in text classification.
 A model based on naive bayes is non-linear.
 \\
 The method is explained in the general setting for multiclass classification.

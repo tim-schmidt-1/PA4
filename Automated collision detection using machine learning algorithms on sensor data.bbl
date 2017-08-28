@@ -126,6 +126,26 @@
       \verb http://dx.doi.org/10.1007/978-3-540-31865-1_25
       \endverb
     \endentry
+    \entry{mck}{misc}{}
+      \name{editor}{1}{}{%
+        {{hash=04005cfe3c2c46993b069e29c10431e0}{%
+           family={Institute},
+           family_i={I\bibinitperiod},
+           given={McKinsey\bibnamedelima Global},
+           given_i={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{04005cfe3c2c46993b069e29c10431e0}
+      \strng{fullhash}{04005cfe3c2c46993b069e29c10431e0}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{title}{The Age of Analytics: Competing In A Data-Driven World}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/the-age-of-analytics-competing-in-a-data-driven-world
+      \endverb
+    \endentry
     \entry{techdocu}{misc}{}
       \name{editor}{1}{}{%
         {{hash=2243586a00190bd0afd96d2985dc4dd5}{%
@@ -317,11 +337,11 @@
       \field{year}{2010}
     \endentry
   \endsortlist
-  \missing{james2013introduction}
-  \missing{rish2001empirical}
   \missing{cox1958regression}
   \missing{friedman2000additive}
   \missing{Burges1998}
+  \missing{rish2001empirical}
+  \missing{james2013introduction}
   \missing{russell1995modern}
   \missing{Breiman2001}
 \endrefsection
